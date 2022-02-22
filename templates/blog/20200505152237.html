@@ -1,18 +1,18 @@
-<h2>よくある質問</h2>
+<h2> Frequently Asked Questions </ h2>
 
-<h3>ページごとのルーティングを自動的に設定する方法はありますか?</h3>
+<h3> Is there a way to automatically set per-page routing? </ H3>
 
-Mojolicious::Plugin::AutoRouteというモジュールを使うと、テンプレートを配置するだけで、自動的にルーティングを作成してくれます。
+If you use a module called Mojolicious :: Plugin :: AutoRoute, you can simply place a template and it will automatically create a route for you.
 
 <pre>
-# Mojolicious
-$self->plugin('AutoRoute');
+#Mojolicious
+$ self-> plugin ('AutoRoute');
 
-# Mojolicious::Lite
-plugin 'AutoRoute';
+#Mojolicious :: Lite
+plugin'AutoRoute';
 
-# Option
-plugin 'AutoRoute', route => $r;
-</pre>
+#Option
+plugin'AutoRoute', route => $ r;
+</ pre>
 
-<a href="https://perlzemi.com/blog/20130731137527.html">ファイルを配置でルーティングを自動生成 - Mojolicious::Plugin::AutoRoute</a>
+<a href="https://perlzemi.com/blog/20130731137527.html"> Automatically generate routing by placing files --Mojolicious :: Plugin :: AutoRoute </a>

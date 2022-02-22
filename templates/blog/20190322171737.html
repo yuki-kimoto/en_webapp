@@ -1,59 +1,59 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/" class="bread-home">
-      <span itemprop="name">
-        <img src="/images/bread/home.png" alt="Mojoliciousスタートアップ">
-      </span>
+      <span itemprop = "name">
+        <img src = "/ images / bread / home.png" alt = "Mojolicious Startup">
+      </ span>
     </a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     here
-  </li>
-</ol>
-<h2>さくらVPSで「Perl + Mojolicious」Webアプリ開発 第4回 コントロールパネルからログインしよう</h2>
+  </ li>
+</ ol>
+<h2> "Perl + Mojolicious" Web application development with Sakura VPS Part 4 Let's log in from the control panel </ h2>
 
 
 
-　今回は、実際にコントロールパネルからログインしてみましょう。
+This time, let's actually log in from the control panel.
 
-コントロールパネル
+Control panel
 
 https://secure.sakura.ad.jp/vpscontrol
 
-　IPアドレスとパスワードを入力すれば、ログインできます。ログインしたら、ページ全体をさらっと見てみましょう。いくつかの機能が見えてますね。
+You can log in by entering your IP address and password. After logging in, take a quick look at the entire page. You can see some features.
 
-　まずVPSホームって所になっていますね。
+First of all, the VPS home is the place.
 
 <pre>
-仮想サーバ情報
-IPアドレス	49.212.148.211
-ホスト名    	 www11197ue.sakura.ne.jp (標準)
-メモリ	1GB
-HDD	 100GB
-ステータス    	 停止
-仮想サーバ操作	    
-</pre>
+Virtual server information
+IP address 49.212.148.211
+Host name www11197ue.sakura.ne.jp (standard)
+Memory 1GB
+HDD 100GB
+Status stopped
+Virtual server operation
+</ pre>
 
-<h3>IPアドレス</h3>
+<h3> IP address </ h3>
 
-　基本的な用語がわからないと、なかなか勉強がはかどらないですね。IPアドレスっていうのは、コンピューターを識別するための番号のようなものです。まぁ、きちんというと、コンピュータにささっているネットワークカードにIPアドレスが割り振られています。
+If you don't understand the basic terms, it will be difficult to study. An IP address is like a number that identifies your computer. Well, properly, the IP address is assigned to the network card that is plugged into the computer.
 
-　サーバーにNIC(ネットワークカード)がささっていて、そこにIPアドレスが振られています。IPアドレスで、49.212.148.211というのを指定すれば、ルーターを伝って、そのIPアドレスまでたどりつけるんです。
+A NIC (network card) is inserted in the server, and an IP address is assigned to it. If you specify 49.212.148.211 as the IP address, it will follow the router and reach that IP address.
 
-　世界中どこにいてもたどり着けます。識別してアクセスできるってなかなか良く考えるとすごいですね。
+You can reach anywhere in the world. It's amazing to think carefully that it can be identified and accessed.
 
-<h3>ホスト名</h3>
+<h3> Hostname </ h3>
 
-　初期設定は自動で割り振られたような名前になってますね。www11197ue.sakura.ne.jp。これを変更する方法はもちろんあるので、安心してください。
+The initial setting is a name that seems to be automatically assigned. www11197ue.sakura.ne.jp. Rest assured that there are of course ways to change this.
 
-　ホスト名というのは、まぁドメイン名とここでは同じ意味でしょう。ドメイン名というのは、識別する名前で役割はIPアドレスと同じなのですが、IPアドレスは数値なので、文字列ではないんですね。
+The host name has the same meaning as the domain name here. A domain name is a name that identifies it and has the same role as an IP address, but since the IP address is a number, it is not a character string.
 
-　ドメイン名はIPアドレスに紐づく形になっていて、基本は1対1で対応させる。DNSサーバーがこれを解決してくれる。つまり、www11197ue.sakura.ne.jpでアクセスすれば、それに対応するIPアドレスをDNSサーバーというものが教えてくれる。
+The domain name is linked to the IP address, and basically there is a one-to-one correspondence. The DNS server will solve this. In other words, if you access it at www11197ue.sakura.ne.jp, the DNS server will tell you the corresponding IP address.
 
-　そして、IPアドレスがわかればサーバーにたどりつけるというわけ。
+And if you know the IP address, you can reach the server.
 
-<h3>ステータス</h3>
+<h3> Status </ h3>
 
-　ステータスは停止となっている。これは、まだOSが起動していないということです。次回は、OSを起動してみたいと思います。
+The status is suspended. This means that the OS hasn't booted yet. Next time, I would like to boot the OS.

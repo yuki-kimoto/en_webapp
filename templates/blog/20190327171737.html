@@ -1,69 +1,69 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/" class="bread-home">
-      <span itemprop="name">
-        <img src="/images/bread/home.png" alt="Mojoliciousスタートアップ">
-      </span>
+      <span itemprop = "name">
+        <img src = "/ images / bread / home.png" alt = "Mojolicious Startup">
+      </ span>
     </a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     here
-  </li>
-</ol>
-<h2>さくらVPSで「Perl + Mojolicious」Webアプリ開発 第10回 今後の目標</h2>
+  </ li>
+</ ol>
+<h2> "Perl + Mojolicious" Web application development with Sakura VPS 10th Future Goal </ h2>
 
 
 
-　さてHellow Worldアプリケーションを実行するところまでができましたね。これで、後はいろいろと改造したり、環境構築方法を覚えていくだけですね。
+Now you have reached the point where you can run the Hello World application. With this, all you have to do is make various modifications and learn how to build an environment.
 
-　Webアプリケーション開発というのは、覚える分野が多岐にわたり、応用のきくWebアプリケーションを作成するのは、簡単そうに見えて、実際にはかなりの時間や技術を要します。
+Web application development has a wide range of fields to remember, and creating a web application with a wide range of applications seems easy, but it actually takes a considerable amount of time and technology.
 
-　今回はどんな分野に学習が広がっていくかということをざらっと書いてみます。
+This time, I will briefly describe in what fields learning will spread.
 
-<h3>Linux関連</h3>
+<h3> Linux related </ h3>
 
-　LinuxというOSに関して覚えていく内容は以下のようなものになります。
+The contents to be remembered about the OS called Linux are as follows.
 
--よく使うLinuxコマンドを覚える
+-Remember commonly used Linux commands
 --cd, ls, tail, more, less, pwd, grep, useradd, passwd, chmod, chown, rm, rmdir
 --vmstat, top, yum, rpm, chkconfig, service
--Linuxのディレクトリ構成を覚える
---/etc, /var, /home
--viを使ったテキスト編集の方法を覚える
--SSHを使ってリモート接続する方法を覚える
---あわせてTeratermなどのSSHクライアントの使い方を覚える
---WinSCPなどを使って、サーバー上のファイルを変更したり、追加したりする方法を覚える
--Postfixを使ってメールサーバーを構築する
--cronを使って、バッチ処理の定期実行の仕方を覚える
--iptablesでファイアーウォールくぉ構築する方法を覚える
--httpd(Apche)を使ってWebサーバーを構築
---mod_proxyを使って、複数のアプリケーションをデプロイできるようになること
---mod_sslを使って、SSL通信ができるようになること
+-Remember the Linux directory structure
+-/ etc, / var, / home
+-Learn how to edit text using vi
+-Learn how to connect remotely using SSH
+--In addition, learn how to use SSH client such as Teraterm
+--Learn how to modify or add files on the server using WinSCP etc.
+-Build a mail server with Postfix
+-Learn how to periodically execute batch processing using cron
+-Learn how to build a firewall with iptables
+-Build a web server using httpd (Apche)
+Being able to deploy multiple applications using --mod_proxy
+Being able to use SSL communication using --mod_ssl
 
-<h3>Perl環境構築関連</h3>
+<h3> Perl environment construction related </ h3>
 
-　Perlで覚えないといけないことです。
+It's something you have to remember in Perl.
 
--perlbrewを使って、新しいバージョンのPerlをインストール
--cpanmを使った、CPANモジュールのインストール
+-Install a new version of Perl using perlbrew
+-Installing CPAN modules using cpanm
 
-<h3>Perl Webアプリケーション開発関連</h3>
+<h3> Perl Web application development related </ h3>
 
--Mojoliciousの使い方いろいろ
---セッション、ディスパッチ、静的ファイルの配信、テンプレートの書き方、アプリケーションの実行方法、設定ファイル、JSONの出力など
--データベースを使ってデータを保存する方法
---DBI, DBIx::Customを使う
---SQLを使って複雑な検索クエリを書く
---ページングの処理を書けるようになる
--メールの送信方法
+-Various ways to use Mojolicious
+--Session, dispatch, static file delivery, template writing, application execution method, configuration file, JSON output, etc.
+-How to save data using a database
+--Use DBI, DBIx :: Custom
+--Write complex search queries using SQL
+--Become able to write paging processing
+-How to send an email
 
-<h3>画面関連(HTML, CSS, JavaScript)</h3>
+<h3> Screen related (HTML, CSS, JavaScript) </ h3>
 
--HTMLの書き方
--CSSの書き方
--JavaScriptの書き方
---jQueryというライブラリの使い方
+-How to write HTML
+-How to write CSS
+-How to write JavaScript
+How to use a library called --jQuery
 
-　連載では、Webアプリケーション開発に必要なことを順番に、解説していきたいと思います。Webアプリケーション開発というのは、覚えることがたくさんありますね。
+In the series, I would like to explain in order what is necessary for Web application development. Web application development has a lot to remember.

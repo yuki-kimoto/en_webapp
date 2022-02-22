@@ -1,100 +1,100 @@
-<h2>未認証ユーザーテーブルの作成</h2>
+<h2> Create unauthenticated user table </ h2>
 
-未認証ユーザーテーブルを作成しましょう。<a href="/blog/20200107082558.html">会員登録フォームの作成</a>が終わったら、次は、データベースに未認証用ユーザーテーブルを作成します。
+Let's create an unauthenticated user table. After <a href="/blog/20200107082558.html"> Creating Membership Registration Form </a>, the next step is to create an unauthenticated user table in the database.
 
-<h3>未認証ユーザーテーブル</h3>
+<h3> Unauthenticated user table </ h3>
 
-未認証ユーザーテーブルとは、ユーザー認証が行われていない仮登録のユーザーを、登録しておくために使用するテーブルのことです。
+The unauthenticated user table is a table used to register temporary registered users who have not been authenticated.
 
-会員登録のフォームが送信されるとメールアドレスとパスワードの情報が登録されますが、まだメールアドレスによるユーザー認証が終わっていません。この状態のユーザーを登録しておくのが、未認証ユーザーテーブルです。
+When the membership registration form is submitted, the information of the e-mail address and password will be registered, but the user authentication by the e-mail address has not been completed yet. The unauthenticated user table registers users in this state.
 
-テーブル名は「user_unauth」と名付けました。
+I named the table "user_unauth".
 
 <table>
   <tr>
-    <th>フィールド</th><th>テーブルのフィールド名</th><th>型</th><th>制約</th><th>デフォルト値</ht>
-  </tr>
+    <th> Field </ th> <th> Table field name </ th> <th> Type </ th> <th> Constraint </ th> <th> Default value </ ht>
+  </ tr>
   <tr>
-    <td>ID</td><td>id</td><td>32bit整数</td><td>プライマリーキー、自動インクリメント</td><td>なし</td>
-  </tr>
+    <td> ID </ td> <td> id </ td> <td> 32bit integer </ td> <td> Primary key, auto-increment </ td> <td> None </ td>
+  </ tr>
   <tr>
-    <td>メールアドレス</td><td>mail</td><td>文字列</td><td>非ヌル</td><td>空文字</td>
-  </tr>
+    <td> Email address </ td> <td> mail </ td> <td> String </ td> <td> Non-null </ td> <td> Empty string </ td>
+  </ tr>
   <tr>
-    <td>ハッシュ化されたパスワード</td><td>password_crypted</td><td>文字列</td><td>非ヌル</td><td>空文字</td>
-  </tr>
+    <td> Hashed password </ td> <td> password_crypted </ td> <td> String </ td> <td> Non-null </ td> <td> Empty string </ td>
+  </ tr>
   <tr>
-    <td>トークン</td><td>token<td>文字列</td><td>非ヌル、ユニーク</td><td>空文字</td>
-  </tr>
+    <td> token </ td> <td> token <td> string </ td> <td> non-null, unique </ td> <td> empty string </ td>
+  </ tr>
   <tr>
-    <td>トークン有効期限</td><td>token_expiration</td><td>64bit整数</td><td>非ヌル</td><td>0</td>
-  </tr>
+    <td> Token expiration </ td> <td> token_expiration </ td> <td> 64-bit integer </ td> <td> non-null </ td> <td> 0 </ td>
+  </ tr>
   <tr>
-    <td>作成日</td><td>token_expiration</td><td>日付時刻</td><td>非ヌル</td><td>0001-01-01 00:00:00</td>
-  </tr>
+    <td> Creation date </ td> <td> token_expiration </ td> <td> Date Time </ td> <td> Non-null </ td> <td> 0001-01-01 00:00:00 </ strong> td>
+  </ tr>
   <tr>
-    <td>更新日</td><td>token_expiration</td><td>日付時刻</td><td>非ヌル</td><td>0001-01-01 00:00:00</td>
-  </tr>
-</table>
+    <td> Updated </ td> <td> token_expiration </ td> <td> Date Time </ td> <td> Non-null </ td> <td> 0001-01-01 00:00:00 </ strong> td>
+  </ tr>
+</ table>
 
-もし氏名、住所、電話番号、希望条件など、会員登録フォームに、他の入力項目がある場合などは、そのフィールドも必要になります。
+If there are other input items on the membership registration form such as name, address, phone number, desired conditions, etc., that field is also required.
 
-<h4>MariaDBで未認証ユーザーテーブルを作成</h4>
+<h4> Create unauthenticated user table in MariaDB </ h4>
 
-<a href="https://en.mariadb.perlzemi.com/">MariaDB</a>で未認証ユーザーテーブルを作成してみましょう。
+Let's create an unauthenticated user table with <a href="https://en.mariadb.perlzemi.com/"> MariaDB </a>.
 
 <pre>
 create table user_unauth (
   id int primary key auto_increment,
-  mail varchar(150) not null default '',
-  password_crypted varchar(150) not null default '',
-  token varchar(150) not null default '',
+  mail varchar (150) not null default'',
+  password_crypted varchar (150) not null default'',
+  token varchar (150) not null default'',
   token_expiration bigint not null default 0,
   created_at datetime not null default '0001-01-01 00:00:00',
   updated_at datetime not null default '0001-01-01 00:00:00',
-  unique(mail),
-  unique(token)
-) ENGINE=InnoDB CHARSET=utf8mb4;
-</pre>
+  unique (mail),
+  unique (token)
+) ENGINE = InnoDB CHARSET = utf8mb4;
+</ pre>
 
-utf8mb4がサポートされていることを前提としています。サポートされていない場合は、utf8にしてください。データべースエンジンは、トランザクションをサポートするために、InnoDBにします。
+It is assumed that utf8mb4 is supported. If it is not supported, please use utf8. The database engine is InnoDB to support transactions.
 
-できる限りのフィールドにnot null制約を付けます。デフォルト値は、プライマリーキー以外のフィールドですべて設定します。
+Put as many fields as possible with a not null constraint. Set all default values ​​for fields other than the primary key.
 
-<h3>フィールドの解説</h3>
+<h3> Field description </ h3>
 
-フィールドの解説です。
+A description of the field.
 
-<h4>ID</h4>
+<h4> ID </ h4>
 
-Webシステム開発入門では、IDは、行を一意に識別できるキーを意味します。それ自体に意味を持たない整数値です。必ずすべてのテーブルに、自動的に値がインクリメントされる、IDを持たせます。他のテーブルから参照される場合は、IDを使います。
+In the introduction to web system development, ID means a key that can uniquely identify a row. An integer value that has no meaning in itself. Make sure every table has an ID whose value is automatically incremented. If it is referenced from another table, use the ID.
 
-primary keyとauto_incrementを設定します。プライマリーキー制約は、フィールドに一意性と非ヌルを保証する、テーブルで一つのフィールドにだけ設定できる特別な制約です。
+Set the primary key and auto_increment. Primary key constraints are special constraints that can be set on only one field in a table, ensuring uniqueness and non-nullity for the field.
 
-型は32bit整数型のintです。
+The type is a 32-bit integer type int.
 
-<h4>ハッシュ化されたパスワード</h4>
+<h4> Hashed password </ h4>
 
-ハッシュ化されたパスワードを保存するフィールドです。フォームで受け取ったパスワードをそのまま保存するのではないということだけ、ここでは、覚えておいてください。ハッシュ化されたパスワードについては、ユーザー認証のの処理を説明する場所で解説します。
+A field to store the hashed password. Just keep in mind here that you don't just save the password you received on the form. Hashed passwords are discussed in the places where we describe the process of user authentication.
 
-<h4>メールアドレス</h4>
+<h4> Email address </ h4>
 
-ユーザーのメールアドレスです。メールアドレスは、一意である必要があるので、unique制約を設定します。
+The user's email address. Email addresses must be unique, so set a unique constraint.
 
-<h4>トークン</h4>
+<h4> Token </ h4>
 
-メールを送信してユーザー認証を行うために発行されるユニークなトークンです。「356a192b7913b04c54574d18c28d46e6395428ab」のような、ランダムな値です。トークンは、一意である必要があるので、unique制約を設定します。
+A unique token issued to send an email and authenticate users. It is a random value, such as "356a192b7913b04c54574d18c28d46e6395428ab". Tokens must be unique, so set a unique constraint.
 
-<h4>トークン有効期限</h4>
+<h4> Token expiration date </ h4>
 
-トークンの有効期限です。この有効期限がきれると、トークンは無効になり、ユーザー認証ができなくなります。
+The expiration date of the token. When this expiration date expires, the token becomes invalid and user authentication is no longer possible.
 
-型は、時刻情報を十分長く先まで保持できるように、64bit整数型のbigintにしています。
+The type is a 64-bit integer type bigint so that the time information can be retained for a long time.
 
-<h4>作成日時</h4>
+<h4> Creation date and time </ h4>
 
-作成日時はdatetime型です。デフォルト値は、SQL標準においても有効な日時の最小値である「0001-01-01 00:00:00」です。
+The creation date and time is of type datetime. The default value is "0001-01-01 00:00:00", which is the minimum valid date and time in the SQL standard.
 
-<h4>更新日時</h4>
+<h4> Updated date and time </ h4>
 
-更新日時はdatetime型です。デフォルト値は、SQL標準においても有効な日時の最小値である「0001-01-01 00:00:00」です。
+The update date and time is of type datetime. The default value is "0001-01-01 00:00:00", which is the minimum valid date and time in the SQL standard.

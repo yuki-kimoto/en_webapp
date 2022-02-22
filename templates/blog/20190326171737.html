@@ -1,208 +1,208 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/" class="bread-home">
-      <span itemprop="name">
-        <img src="/images/bread/home.png" alt="Mojoliciousスタートアップ">
-      </span>
+      <span itemprop = "name">
+        <img src = "/ images / bread / home.png" alt = "Mojolicious Startup">
+      </ span>
     </a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     here
-  </li>
-</ol>
-<h2>さくらVPSで「Perl + Mojolicious」Webアプリ開発 第9回 Webアプリケーションをデプロイしてみる</h2>
+  </ li>
+</ ol>
+<h2> "Perl + Mojolicious" Web application development with Sakura VPS 9th Try deploying a Web application </ h2>
 
 
 
-　今日はついにWebアプリケーションを実際に動かしてURLを指定してアクセスできるようにしてみたいと思います。ついにこの時がきました。Webアプリケーションを本番環境に配置することは、デプロイという言葉で呼ばることが多いですので、覚えておきましょう。
+Today, I would like to finally run the web application and specify the URL so that it can be accessed. This time has finally come. Keep in mind that putting a web application in production is often referred to as deploying.
 
-　これが、できると後は、環境を整えたり、テクニックを覚えたりして、Webアプリケーションを発展させていくだけです。
+If this is possible, all you have to do is prepare the environment, learn techniques, and develop the Web application.
 
-　Webアプリケーションは、僕が準備してダウンロードできるようにしてあります。このアプリケーションをダウンロードして、動かしてみましょう。
+The web application is prepared and downloaded by me. Download this application and let it work.
 
-　まず最初に<b>webapp</b>というユーザーになりましょう。Webアプリケーションはrootユーザーではなく、webappユーザーで実行します。
-
-<pre>
-su - webapp
-</pre>
-
-　次の手順をリモートコンソールで実行してみてください。リモートコンソールの上部のタイトルバーにあるペーストボタンを使って、コマンドを貼り付けて実行していくのがおすすめです。コマンドを一つ貼り付けるたびにEnterキーを押して実行していきます。
+First of all, let's become a user called <b> webapp </ b>. Run the web application as the webapp user, not the root user.
 
 <pre>
-curl -kL https://github.com/downloads/yuki-kimoto/webminiapp/webminiapp-0.01.tar.gz > webminiapp-0.01.tar.gz
+su --webapp
+</ pre>
+
+Please try the following steps on the remote console. It is recommended to paste and execute the command using the paste button in the title bar at the top of the remote console. Each time you paste one command, press Enter to execute it.
+
+<pre>
+curl -kL https://github.com/downloads/yuki-kimoto/webminiapp/webminiapp-0.01.tar.gz> webminiapp-0.01.tar.gz
 tar xf webminiapp-0.01.tar.gz
 cd webminiapp-0.01
 ./webminiapp
-</pre>
+</ pre>
 
-　4つのコマンドがあるので順に説明しましょう。一行目は長いので複数行になっていると思うので注意してください。ひとつのコマンドです。
+There are 4 commands, so let's explain them in order. Please note that the first line is long, so I think it has multiple lines. It's one command.
 
-<h4>Webアプリケーションのダウンロード</h4>
+<h4> Web application download </ h4>
 
-　まず最初にすることはWebアプリケーションのダウンロードです。
-
-<pre>
-curl -kL https://github.com/downloads/yuki-kimoto/webminiapp/webminiapp-0.01.tar.gz > webminiapp-0.01.tar.gz
-</pre>
-
-　curlというコマンドはWeb上のコンテンツをダウンロードするためのコマンドです。
+The first thing to do is download the web application.
 
 <pre>
-curl オプション URL
-</pre>
+curl -kL https://github.com/downloads/yuki-kimoto/webminiapp/webminiapp-0.01.tar.gz> webminiapp-0.01.tar.gz
+</ pre>
 
-　<b>-kL</b>というのは<b>-k</b>というオプションと<b>-L</b>というオプションを指定するという意味です。<b>-k -L</b>と書くのと同じ意味になります。<b>-k</b>オプションは、セキュアな接続をしないという意味になり、<b>-L</b>はリダイレクトを行うという意味になります。深い意味は今は覚えなくてもよいです。ふーんという感じでよいです。
+The command curl is a command for downloading content on the Web.
 
-　最後にある<b>&gt;</b>は、リダイレクトを行うという意味で、URLで指定したコンテンツを出力するファイル名を指定しています。
+<pre>
+curl option URL
+</ pre>
 
-　これでローカルディレクトリに<b>webminiapp-0.01.tar.gz</b>というファイルができます。
+<B> -kL </ b> means to specify the option <b> -k </ b> and the option <b> -L </ b>. It has the same meaning as writing <b> -k -L </ b>. The <b> -k </ b> option means no secure connection, and <b> -L </ b> means redirect. You don't have to remember the deep meaning now. Hmmm is fine.
 
-<h4>ダウンロードしたファイルの展開</h4>
+<B> & gt; </ b> at the end specifies the file name to output the content specified in the URL in the sense of redirecting.
 
-　次はダウンロードしたファイルを展開します。
+This will create a file <b> webminiapp-0.01.tar.gz </ b> in your local directory.
+
+<h4> Extract downloaded files </ h4>
+
+Next, unzip the downloaded file.
 
 <pre>
 tar xf webminiapp-0.01.tar.gz
-</pre>
+</ pre>
 
-　tarコマンドは、TAR形式で圧縮されたファイルを展開するためのコマンドです。
+The tar command is a command for decompressing a file compressed in TAR format.
 
 <pre>
-tar オプション ファイル名
-</pre>
+tar option filename
+</ pre>
 
-　<b>x</b>オプションは、gz形式で圧縮されている場合にも展開することを行うオプションで、<b>f</b>はファイルに対して行うということを意味しています。
+The <b> x </ b> option is an option to decompress even if it is compressed in gz format, and <b> f </ b> means to do it for the file. ..
 
-　Windowsでもzip形式というものがありますが、実はこれは複数ファイルのアーカイブ化と圧縮を一緒になっている形式です。Linuxでは、複数ファイルを一つのファイルにまとめるのにtar形式というものが用いられます。これはtarコマンドによって作成することができます。また圧縮をするのにgz形式がよく用いられます。これはgzipコマンドによって実行できます。
+There is also a zip format on Windows, but this is actually a format that combines archiving and compression of multiple files. In Linux, the tar format is used to combine multiple files into one file. This can be created with the tar command. Also, the gz format is often used for compression. This can be done with the gzip command.
 
-　拡張子が<b>.tar.gz</b>となっている場合はtarコマンドでTAR形式にアーカイブ化され、gzipコマンドでgz形式に圧縮されたという意味です。上記のコマンドによって、展開することができ<b>webminiapp-0.01</b>というディレクトリができます。
+If the extension is <b> .tar.gz </ b>, it means that it was archived in TAR format with the tar command and compressed to gz format with the gzip command. The above command will create a directory called <b> webminiapp-0.01 </ b> that can be expanded.
 
 <pre>
 webminiapp-0.01
-</pre>
+</ pre>
 
-<h4>カレントディレクトリの変更</h4>
+<h4> Change current directory </ h4>
 
-　カレントディレクトは<b>cd</b>コマンドで変更できます。これはWindowsと同じですね。
+The current directory can be changed with the <b> cd </ b> command. This is the same as Windows.
 
 <pre>
 cd webminiapp-0.01
-</pre>
+</ pre>
 
-<h4>Webアプリケーションの実行</h4>
+<h4> Run web application </ h4>
 
-　Webアプリケーションを起動します。次のコマンドでWebアプリケーションを起動できます。
+Start the web application. You can start the web application with the following command:
 
 <pre>
 ./webminiapp
-</pre>
+</ pre>
 
-　では以下のURLにアクセスしてみてください。「Hello World!」と表示されたら成功です。
-
-<pre>
-http://あなたのIPアドレス:8080/
-</pre>
-
-　これでWebアプリケーションが実行できましたね。
-
-　8080というのはポート番号です。Webアプリケーションが8080というポート番号で起動しているので、8080にアクセスしています。
-
-　普段は以下のような感じで指定しますね。
+Then, please access the following URL. If "Hello World!" Is displayed, it is successful.
 
 <pre>
-http://あなたのIPアドレス
-</pre>
+http: // your IP address: 8080 /
+</ pre>
 
-　実はこれは以下の記述の省略系になっています。
+You can now run the web application.
+
+8080 is the port number. I'm accessing 8080 because the web application is running on port number 8080.
+
+Normally, you specify it as follows.
 
 <pre>
-http://あなたのIPアドレス:80
-</pre>
+http: // your IP address
+</ pre>
 
-　省略するとポート番号が80番でアクセスするという意味になります。
+Actually, this is an abbreviation of the following description.
 
-　もしアプリケーションを停止させたい場合は<b>--stop</b>オプションで停止できます。
+<pre>
+http: // your IP address: 80
+</ pre>
+
+If omitted, it means that the port number is 80 for access.
+
+If you want to stop the application, you can stop it with the <b> --stop </ b> option.
 
 <pre>
 ./webminiapp --stop
-</pre>
+</ pre>
 
-　またログをは以下のファイルに出力されます。
-
-<pre>
-log/production.log
-</pre>
-
-　moreコマンドを使えば、ログを見ることもできます。
+Also, the log will be output to the following file.
 
 <pre>
-more log/production.log
-</pre>
+log / production.log
+</ pre>
 
-　スペースキーでログが進み、qを押すと続きをみるのをキャンセルできます。
-
-<h3>ポート番号80番でWebアプリケーションにアクセスする</h3>
-
-　でもやっぱり80番ポートで、Webアプリケーションを実行したいですね。方法はいくつかあるのですが、ここでは応用が利かないけれど一番簡単な、ポートフォーワードという方法を試してみましょう。
-
-　8080でアプリケーションが起動しているので、80番ポートにアクセスがあった場合に8080に転送すればよいわけですね。
-
-　これはrootユーザーで作業します。
+You can also see the log by using the more command.
 
 <pre>
-su -
-</pre>
+more log / production.log
+</ pre>
 
-　以下のコマンドを実行します。iptablesというコマンドを使います。
+You can cancel the continuation by pressing q to advance the log with the space key.
+
+<h3> Access the web application on port number 80 </ h3>
+
+But after all, I want to run a web application on port 80. There are several ways to do this, but here I'll try the simplest, but not applicable, port forward method.
+
+Since the application is running on 8080, if there is access to port 80, you should forward it to 8080.
+
+This works as the root user.
+
+<pre>
+su ---
+</ pre>
+
+Execute the following command. Use the command iptables.
 
 <pre>
 iptables -t nat -I PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080
 /etc/rc.d/init.d/iptables save
 service iptables restart
-</pre>
+</ pre>
 
-<h4>ポートフォワード</h4>
+<h4> Port Forward </ h4>
 
-　一つ目のコマンドでポートフォワードの設定をしています。80番ポートへのアクセスを8080に転送します。
+The port forwarding is set with the first command. Forward access to port 80 to 8080.
 
 <pre>
 iptables -t nat -I PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080
-</pre>
+</ pre>
 
-<h4>内容の保存</h4>
+<h4> Save content </ h4>
 
-　設定した内容を保存しています。
+The set contents are saved.
 
 <pre>
 /etc/rc.d/init.d/iptables save
-</pre>
+</ pre>
 
-<h4>iptablesの再起動</h4>
+<h4> Restart iptables </ h4>
 
-　iptablesを再起動しています。
+I'm restarting iptables.
 
 <pre>
 service iptables restart
-</pre>
+</ pre>
 
-<h4>80番ポートでアクセスしてみる</h4>
+<h4> Try to access on port 80 </ h4>
 
-　以下のURLでHello Worldと表示されれば成功です。お疲れ様でした。
+If Hello World is displayed at the following URL, it is successful. good job for today.
 
 <pre>
-http://あなたのIPアドレス
-</pre>
+http: // your IP address
+</ pre>
 
-<h4>ポートフォワードの設定を下に戻す</h4>
+<h4> Return the port forwarding setting to the bottom </ h4>
 
-　元に戻したいときは次のコマンドを実行してくださいね。後に戻すことになると思います。
+If you want to restore it, please execute the following command. I think I'll bring it back later.
 
 <pre>
 iptables -t nat -F PREROUTING
 /etc/rc.d/init.d/iptables save
 service iptables restart
-</pre>
+</ pre>
 
-　<b>-F</b>オプションで設定を元に戻せます。ターゲットは<b>-t</b>オプションで<b>nat</b>テーブルを指定して、<b>PREROUTING</b>というチェーンの設定を戻すという意味になります。
+You can restore the settings with the <b> -F </ b> option. The target means to specify the <b> nat </ b> table with the <b> -t </ b> option and return the <b> PREROUTING </ b> chain settings.

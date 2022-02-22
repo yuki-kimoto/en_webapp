@@ -1,138 +1,138 @@
-<h2>会員登録フォームの作成</h2>
+<h2> Creating a membership registration form </ h2>
 
-会員登録フォームを作成します。Webシステム開発入門では、メールアドレスがユーザーIDになる会員登録の実装方法を解説します。
+Create a membership registration form. In the introduction to Web system development, we will explain how to implement member registration where the email address becomes the user ID.
 
-<img src="/images/acount/new_acount_form.png">
+<img src = "/ images / account / new_acount_form.png">
 
-<h3>会員登録のユーザー情報</h3>
+<h3> Member registration user information </ h3>
 
-会員登録に最低限必要なものは以下です。
-
-<ul>
-  <li>メールアドレス</li>
-  <li>パスワード</li>
-</ul>
-
-メールアドレスが、ユーザーを一意に識別するためのユーザーIDになります。メールアドレスはユーザー認証に利用されます。ユーザーのメールアドレスは、ユーザー本人しか受信できないと想定できるので、ユーザー認証に利用できます。
-
-<h3>会員登録フォームの作成</h3>
-
-会員登録フォームを作成してみましょう。「templates/signup.html.ep」に作成してください。
-
-<pre>
-<div class="signup">
-  <form action="<%= url_for %>" method="POST">
-    <div class="signup-title">新規アカウントを作成</div>
-    <%= text_field 'mail', placeholder => 'メールアドレス' %>
-    <%= password_field 'password', placeholder => 'パスワード' %>
-    <%= submit_button 'アカウント登録' %>
-    <%= hidden_field 'op' => 'register' %>
-  </form>
-</div>
-</pre>
-
-<h4>タグヘルパー</h4>
-
-「text_field」「password_field」というのは、<a href="https://en.mojodoc.perlzemi.com/Mojolicious::Plugin::TagHelpers.html">Mojoliciousのタグヘルパー</a>です。text_fieldは、自動的にフォームに値を復元してくれるので便利です。たとえば、フォームの内容に間違いがあった場合に、同じ画面を表示することになりますが、このときに、値を自動的に復元してくれるのです。
-
-<h4>actionのurl_forメソッド</h4>
-
-<a href="https://en.mojodoc.perlzemi.com/Mojolicious::Controller.html">url_forメソッド</a>に引数を与えなかった場合は、現在のURLを返してくれます。現在のURLのPOSTの処理で、この後の処理を行います。
-
-<h4>仮登録の処理</h4>
-
-仮登録の処理であることが明示的にわかるように、隠しフィールドとして「op」という名前で「register」という値を設定しています。
-
-<pre>
-      <%= hidden_field 'op' => 'register' %>
-</pre>
-
-<h4>HTML情報</h4>
-
-HTMLの情報です。
+The minimum required items for membership registration are as follows.
 
 <ul>
-  <li><a href="https://en.webdesign.perlzemi.com/blog/20200226082049.html">divタグ</a></li>
-  <li><a href="https://en.webdesign.perlzemi.com/blog/20200317081313.html">テキストフィールド</a></li>
-  <li><a href="https://en.webdesign.perlzemi.com/blog/20200318075135.html">パスワードフィールド</a></li>
-  <li>サブミットボタン</li>
-  <li>隠しフィールド</li>
-  <li>formタグ</li>
-  <li>class属性</li>
-</ul>
+  <li> Email address </ li>
+  <li> password </ li>
+</ ul>
 
-<h4>登録フォームのスタイルシート</h4>
+Your email address will be your user ID to uniquely identify you. The email address will be used for user authentication. Since it can be assumed that the user's email address can only be received by the user himself / herself, it can be used for user authentication.
 
-登録フォームのスタイルシートは「public/css/default.css」に記述してください。スマートフォン対応のCSS設定がされていることが前提になります。
+<h3> Creating a membership registration form </ h3>
+
+Let's create a membership registration form. Create it in "templates / signup.html.ep".
 
 <pre>
-  /* 会員登録 */
+<div class = "signup">
+  <form action = "<% = url_for%>" method = "POST">
+    <div class = "signup-title"> Create a new account </ div>
+    <% = text_field'mail', placeholder =>'email address'%>
+    <% = password_field'password', placeholder =>'password'%>
+    <% = submit_button'Account registration'%>
+    <% = hidden_field'op'=>'register'%>
+  </ form>
+</ div>
+</ pre>
+
+<h4> Tag helper </ h4>
+
+"Text_field" and "password_field" are <a href="https://en.mojodoc.perlzemi.com/Mojolicious :: Plugin :: TagHelpers.html"> Mojolicious tag helpers </a>. text_field is useful because it automatically restores the value to the form. For example, if the content of the form is incorrect, the same screen will be displayed, but at this time, the value will be restored automatically.
+
+<h4> action url_for method </ h4>
+
+If you don't give an argument to <a href="https://en.mojodoc.perlzemi.com/Mojolicious ::Controller.html"> url_for method </a>, it will return the current URL. In the POST processing of the current URL, the subsequent processing will be performed.
+
+<h4> Temporary registration processing </ h4>
+
+The hidden field is named "op" and has a value of "register" so that you can explicitly see that it is a temporary registration process.
+
+<pre>
+      <% = hidden_field'op'=>'register'%>
+</ pre>
+
+<h4> HTML information </ h4>
+
+HTML information.
+
+<ul>
+  <li> <a href="https://en.webdesign.perlzemi.com/blog/20200226082049.html"> div tag </a> </ li>
+  <li> <a href="https://en.webdesign.perlzemi.com/blog/20200317081313.html"> Text field </a> </ li>
+  <li> <a href="https://en.webdesign.perlzemi.com/blog/20200318075135.html"> Password field </a> </ li>
+  <li> Submit button </ li>
+  <li> Hidden field </ li>
+  <li> form tag </ li>
+  <li> class attribute </ li>
+</ ul>
+
+<h4> Registration form style sheet </ h4>
+
+Please describe the style sheet of the registration form in "public / css / default.css". It is assumed that the CSS settings for smartphones have been set.
+
+<pre>
+  /* Member registration */
   .signup {
-    background:#fafafa;
-    padding:70px 0;
+    background: #fafafa;
+    padding: 70px 0;
   }
   .signup form {
-    width:calc(100% - 15px);
-    max-width:500px;
-    margin-left:auto;
-    margin-right:auto;
+    width: calc (100% -15px);
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
   }
   .signup-title {
-    font-weight:bold;
-    text-align:center;
-    font-size:28px;
+    font-weight: bold;
+    text-align: center;
+    font-size: 28px;
   }
-  .signup input[type=text], .signup input[type=password] {
-    display:block;
-    width:calc(100% - 15px);
-    margin-left:auto;
-    margin-right:auto;
-    margin-top:12px;
-    margin-bottom:12px;
-    padding:17px 10px 15px 10px;
-    border-radius:3px;
-    border:1px solid #ddd;
-    font-size:16px;
+  .signup input [type = text], .signup input [type = password] {
+    display: block;
+    width: calc (100% -15px);
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    padding: 17px 10px 15px 10px;
+    border-radius: 3px;
+    border: 1px solid #ddd;
+    font-size: 16px;
   }
-  .signup input[type=submit] {
-    display:block;
-    width:calc(50%);
-    max-width:500px;
-    margin-left:auto;
-    margin-right:auto;
-    background:#D82E5D;
-    border:1px solid #D82E5D;
-    color:white;
-    padding:15px 0 13px 0;
-    border-radius:5px;
-    cursor:pointer;
-    font-size:20px;
+  .signup input [type = submit] {
+    display: block;
+    width: calc (50%);
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    background: # D82E5D;
+    border: 1px solid # D82E5D;
+    color: white;
+    padding: 15px 0 13px 0;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
   }
-</pre>
+</ pre>
 
-<h4>会員登録フォームのルーティング</h4>
+<h4> Membership registration form routing </ h4>
 
-会員登録フォームのルーティングです。startupメソッドの中に<a href="https://en.mojodoc.perlzemi.com/Mojolicious::Guides::Routing.html">ルーティング</a>を記述しましょう。
+It is the routing of the membership registration form. Write <a href="https://en.mojodoc.perlzemi.com/Mojolicious ::Guides::Routing.html"> Routing </a> in the startup method.
 
 <pre>
 sub startup {
-  my $self = shift;
+  my $ self = shift;
 
-  # ルーター
-  my $r = $self->routes;
+  # Router
+  my $ r = $ self-> routes;
   
-  $r->any('/signup' => sub { shift->render('signup') });
+  $ r-> any ('/ signup' => sub {shift-> render ('signup')});
 }
-</pre>
+</ pre>
 
-<a href="https://en.mojolicious.perlzemi.com/blog/20130731137527.html">AutoRouteプラグイン</a>を使ってルーティングを自動化している場合はテンプレートを「auto/signup.html.ep」に配置してください。
+If you are using <a href="https://en.mojolicious.perlzemi.com/blog/20130731137527.html"> AutoRoute plugin </a> to automate routing, the template should be "auto / signup.html". Please place it in ".ep".
 
 <pre>
 sub startup {
-  my $self = shift;
+  my $ self = shift;
 
-  my $r = $self->routes;
+  my $ r = $ self-> routes;
   
-  $self->plugin('AutoRoute', route => $r);
+  $ self-> plugin ('AutoRoute', route => $ r);
 }
-</pre>
+</ pre>

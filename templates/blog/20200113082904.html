@@ -1,50 +1,50 @@
-<h2>ユーザーテーブルの作成</h2>
+<h2> Create user table </ h2>
 
-ユーザーテーブルを作成しましょう。ユーザーテーブルとは、ユーザー情報を保存しておくデータベースのテーブルのことです。仮登録ユーザーテーブルの作成が終わったら、次は、ユーザーテーブルを作成しましょう。
+Let's create a user table. A user table is a database table that stores user information. After creating the temporary registration user table, let's create the user table.
 
-<h3>ユーザーテーブルとは</h3>
+<h3> What is a user table? </ H3>
 
-ユーザーテーブルとは、ユーザー情報を保存しておくデータベースのテーブルのことです。次のフィールドが必要です。
+A user table is a database table that stores user information. You need the following fields:
 
-テーブル名は「user」にしました。
+The table name is "user".
 
 <table>
   <tr>
-    <th>フィールド</th><th>テーブルのフィールド名</th><th>型</th><th>制約</th>
-  </tr>
+    <th> Field </ th> <th> Table field name </ th> <th> Type </ th> <th> Constraint </ th>
+  </ tr>
   <tr>
-    <td>行ID</td><td>id</td><td>32bit整数</td><td>プライマリーキー、自動インクリメント</td>
-  </tr>
+    <td> Row ID </ td> <td> id </ td> <td> 32-bit integer </ td> <td> Primary key, auto-increment </ td>
+  </ tr>
   <tr>
-    <td>ユーザーID</td><td>code</td><td>文字列</td><td>非ヌル、ユニーク </td>
-  </tr>
+    <td> User ID </ td> <td> code </ td> <td> String </ td> <td> Non-null, unique </ td>
+  </ tr>
   <tr>
-    <td>ハッシュ化されたパスワード</td><td>password_crypted</td><td>文字列</td><td>非ヌル</td>
-  </tr>
+    <td> Hashed password </ td> <td> password_crypted </ td> <td> string </ td> <td> non-null </ td>
+  </ tr>
   <tr>
-    <td>メールアドレス</td><td>mail</td><td>文字列</td><td>非ヌル</td>
-  </tr>
-</table>
+    <td> Email address </ td> <td> mail </ td> <td> String </ td> <td> Non-null </ td>
+  </ tr>
+</ table>
 
-氏名、住所、電話番号、希望条件など、会員登録フォームに、他の入力項目がある場合などは、そのフィールドも必要になります。
+If there are other input items on the membership registration form such as name, address, phone number, desired conditions, etc., that field is also required.
 
-<h4>mysqlでユーザーテーブルを作成</h4>
+<h4> Create user table with mysql </ h4>
 
-mysqlでユーザーテーブルを作成してみましょう。
+Let's create a user table with mysql.
 
 <pre>
 create table user (
   id int primary key auto_increment,
-  code varchar(150) not null default '',
-  password_crypted varchar(150) not null default '',
-  mail varchar(150) not null default '',
-  unique(mail),
-  unique(code)
-) ENGINE=InnoDB CHARSET=utf8mb4;
-</pre>
+  code varchar (150) not null default'',
+  password_crypted varchar (150) not null default'',
+  mail varchar (150) not null default'',
+  unique (mail),
+  unique (code)
+) ENGINE = InnoDB CHARSET = utf8mb4;
+</ pre>
 
-utf8mb4がサポートされていない場合は、utf8に書き換えてください。
+If utf8mb4 is not supported, replace it with utf8.
 
-<h3>フィールドの解説</h3>
+<h3> Field description </ h3>
 
-フィールドは、トークンを除いて、仮登録ユーザーテーブルと同じですので、<a href="/blog/20200110081755.html">仮登録ユーザーテーブルの作成</a>の記事を参考にしてください。
+The fields are the same as the temporary registration user table except for the token, so please refer to the article <a href="/blog/20200110081755.html"> Creating a temporary registration user table </a>.

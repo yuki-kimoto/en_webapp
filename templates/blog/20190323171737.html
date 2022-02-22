@@ -1,77 +1,77 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/" class="bread-home">
-      <span itemprop="name">
-        <img src="/images/bread/home.png" alt="Mojoliciousスタートアップ">
-      </span>
+      <span itemprop = "name">
+        <img src = "/ images / bread / home.png" alt = "Mojolicious Startup">
+      </ span>
     </a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     here
-  </li>
-</ol>
-<h2>さくらVPSで「Perl + Mojolicious」Webアプリ開発 第5回 サーバーの起動</h2>
+  </ li>
+</ ol>
+<h2> "Perl + Mojolicious" Web application development with Sakura VPS 5th Server startup </ h2>
 
 
 
-　前回はコントロールパネルのログインまでいきましたね。今日は、サーバーの起動をしてみたいと思います。っといっても簡単で、VPSコントロール画面の仮想サーバー操作の「起動」というボタンを押すだけです。
-
-<pre>
-起動ボタンを押すだけ
-</pre>
-
-　ステータスが稼働中に変わります。
-
-<h3>リモートコンソールを使って、サーバーにログインしてみる</h3>
-
-　じゃぁ、次何したらいいのかなぁと思うと思います。サーバーを起動したんだから、そのサーバーにログインみしみましょう。ここが最初の一歩になります。
-
-　さくらVPSにはリモートコンソールという機能がついているので、なんとブラウザからサーバーをコマンドを使って操作することができます。
+Last time, you went to the control panel login. Today, I would like to start the server. It's easy, just press the "Start" button of the virtual server operation on the VPS control screen.
 
 <pre>
-リモートコンソールでコマンドを実行できる
-</pre>
+Just press the start button
+</ pre>
 
-　リモートコンソールには「VPSコントロールパネル画面」の左側の「リモートコンソール」からいけます。
+The status changes during operation.
 
-　コンソール画面には以下のような表示がなされていて、ログインするのを待機しています。
+<h3> Try logging in to the server using the remote console </ h3>
 
->|perl|
+Then, I wonder what to do next. Now that you've started the server, let's log in to that server. This is the first step.
+
+Sakura VPS has a function called remote console, so you can operate the server from a browser using commands.
+
+<pre>
+You can execute commands on the remote console
+</ pre>
+
+You can access the remote console from the "remote console" on the left side of the "VPS control panel screen".
+
+The following display is displayed on the console screen, waiting for you to log in.
+
+> | perl |
 www11123ue.sakura.ne.jp login:
 <pre>
 
-　もし今までFTPでファイルをアップロードするだけの開発をしてきたとしたら、この画面にはちょっと驚いてしまうかもしれません。ちょっと難しそうだなぁと感じるでしょう。
+If you have been developing just uploading files by FTP, you may be a little surprised at this screen. You will find it a little difficult.
 
-　でも、実際は少し慣れれば簡単だし、覚えれば覚えるほど開発効率もよくなるし、プログラムの自動化もできるようになってくる。プログラマーとして、一人前になるためには、避けて通っちゃいけない。もちろんデザイナーよりのプログラマーさんも、覚えておいて損はない。
+However, in reality, it is easy if you get used to it a little, and the more you learn, the better the development efficiency will be, and you will be able to automate the program. As a programmer, in order to become a full-fledged person, you must avoid it. Of course, programmers rather than designers are worth remembering.
 
-　じゃぁ、ログインしてみよう。まず「root」とうって「Enter」キーを押します。
+Then, let's log in. First, say "root" and press the "Enter" key.
 
-</pre>
+</ pre>
 root
 <pre>
 
-　これはrootユーザーでログインするという意味です。
+This means logging in as the root user.
 
-　(リモートコンソールは不安定になりがちななようです。僕は、Chromeでアクセスしたけれど、キーボードを受け付けてくれませんでした。なんでかFireFoxならいけた。時間がたって待つと回復するときもあるようです。文字列が入力できないときは、少しまってみましょう。)
+(The remote console tends to be unstable. I accessed it in Chrome, but it didn't accept the keyboard. Somehow I could use FireFox. It seems that it may recover after a while. So, if you can't enter a string, let's wait a bit.)
 
-　次はパスワードの入力です。初期パスワードは「VPSコントロールパネル」にログインしたときのパスワードと同じです。
+Next is the password entry. The initial password is the same as the password when you logged in to the "VPS Control Panel".
 
-</pre>
-パスワードを入力
+</ pre>
+Enter password
 <pre>
 
-　パスワードは入力していても画面には見えません。他の人に見られないようになっている。パスワードを入力したらEnterキーを押しましょう。パスワードが正しければログインできます。
+Even if you enter the password, it will not be visible on the screen. It is designed not to be seen by other people. After entering the password, press Enter. If the password is correct, you can log in.
 
-　次のような画面になりますね。
+The screen will look like the one below.
 
-</pre>
-[root@www11123ue ~]#
+</ pre>
+[root @ www11123ue ~] #
 <pre>
 
-　#で始まっているときはrootユーザーでログインしているという意味になります。とりあえず、これでログインまでできましたね。
+When it starts with #, it means that you are logged in as the root user. For the time being, you can now log in.
 
-　でも初めてコマンド画面でログインした人は、きっといったい自分は何をしているのだろうかと不安にとらわれていると思います。
+However, if you log in on the command screen for the first time, you may be worried about what you are doing.
 
-　次回は、いったいこれは何なのかを説明したいと思います。少しづつ階段を上っていきましょうね。
+Next time, I would like to explain what this is all about. Let's go up the stairs little by little.

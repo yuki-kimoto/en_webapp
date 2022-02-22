@@ -1,113 +1,113 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/" class="bread-home">
-      <span itemprop="name">
-        <img src="/images/bread/home.png" alt="Webシステム開発入門 Perl&Mojolicious">
-      </span>
+      <span itemprop = "name">
+        <img src = "/ images / bread / home.png" alt = "Introduction to Web System Development Perl & Mojolicious">
+      </ span>
     </a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     here
-  </li>
-</ol>
+  </ li>
+</ ol>
 
-<h2>LinuxにおけるWeb開発環境の構築</h2>
+<h2> Building a web development environment on Linux </ h2>
 
-Ubuntu, CentOS, DebianなどのLinuxサーバーにおけるWeb開発環境の構築について解説します。
+Explains how to build a web development environment on Linux servers such as Ubuntu, CentOS, and Debian.
 
-LinuxサーバーにSSHを使って接続できていることは前提とします。
+It is assumed that you can connect to the Linux server using SSH.
 
-<h3>PerlでWebシステム開発環境を構築するための前提</h3>
+<h3> Prerequisites for building a Web system development environment with Perl </ h3>
 
-各Linuxにおいて、Perlをインストールすることの前提について書いておきます。yumやapt-getなど、パッケージのインストールコマンドがLinuxディストリビューションにおいて異なるので、必要な内容を書いておきます。
+I will write about the prerequisites for installing Perl on each Linux. Package installation commands such as yum and apt-get are different for Linux distributions, so write down what you need.
 
-<h4>make</h4>
+<h4> make </ h4>
 
-makeがインストールされていない場合はインストールしてください。
-
-<pre>
-# CentOSの例
-sudo yum -y install make
-</pre>
-
-makeは、Perlのモジュールをインストールするときに、その手順を実行するツールとして利用されます。
-
-<h4>gcc</h4>
-
-gccがインストールされていない場合は、インストールしてください。
+If make is not installed, please install it.
 
 <pre>
-# CentOSの例
+#CentOS example
+sudo yum -y install make make
+</ pre>
+
+make is used as a tool to perform the steps when installing a Perl module.
+
+<h4> gcc </ h4>
+
+If gcc is not installed, install it.
+
+<pre>
+#CentOS example
 sudo yum -y install gcc
-</pre>
+</ pre>
 
-gccは、PerlのモジュールでC拡張が使われている場合に、これをコンパイルするために必要です。
+gcc is needed to compile the C extension if it's used in a Perl module.
 
-<h4>patch</h4>
+<h4> patch </ h4>
 
-patchがインストールされていない場合は、インストールしてください。
-
-<pre>
-# CentOSの例
-sudo yum -y install patch
-</pre>
-
-patchは、perlbrewと呼ばれるPerlのインストールツールを使う場合に必要です。
-
-<h4>openssl</h4>
-
-opensslがインストールされていない場合は、インストールしてください。opensslのコマンドに加えて、opensslのライブラリ(openssl-devel。名前はLinuxディストリビューションで異なる)もインストールします。
+If patch is not installed, install it.
 
 <pre>
-# CentOSの例
+#CentOS example
+sudo yum -y install patch patch
+</ pre>
+
+patch is required if you want to use a Perl installation tool called perlbrew.
+
+<h4> openssl </ h4>
+
+If openssl is not installed, please install it. In addition to the openssl commands, it also installs the openssl library (openssl-devel, named differently for Linux distributions).
+
+<pre>
+#CentOS example
 sudo yum -y install openssl
 sudo yum -y install openssl-devel
-</pre>
+</ pre>
 
-opensslは、Perlとは直接的には、関係がありませんが、最近のWebがHTTPSで接続することを、求められるため、あらかじめインストールしておきましょう。
+openssl is not directly related to Perl, but it should be installed in advance as the recent web requires HTTPS to connect.
 
-<h4>git</h4>
+<h4> git </ h4>
 
-gitがインストールされていない場合は、インストールしてください。
+If you don't have git installed, install it.
 
 <pre>
-# CentOSの例
+#CentOS example
 sudo yum -y git
-</pre>
+</ pre>
 
-gitは、Perlとは直接関係がありませんが、Webシステム開発におけるソースコード管理に使うので、インストールしておきましょう。
+Although git is not directly related to Perl, it is used for source code control in Web system development, so let's install it.
 
-<h4>システムPerl</h4>
+<h4> System Perl </ h4>
 
-Webシステム開発には、ユーザー環境にインストールするPerlを使うのですが、システムPerlもインストールしておいた方が、何かと便利でしょう。
+For Web system development, I use Perl that is installed in the user environment, but it would be convenient if I also installed the system Perl.
 
 <pre>
-# CentOSの例
+#CentOS example
 sudo yum -y install perl perl-core
-</pre>
+</ pre>
 
-<h3>Perlのユーザー環境へのインストール</h3>
+<h3> Installing Perl in the user environment </ h3>
 
-次にPerlをインストールしましょう。Perlをユーザー環境にインストールします。以下の記事の「ユーザー環境へのPerlのインストール」という部分です。
+Next, let's install Perl. Install Perl in your environment. The part of the following article, "Installing Perl in the User Environment".
 
 <ul>
-  <li><a href="https://perlzemi.com/blog/20180813153411.html">LinuxへのPerlのインストール</a></li>
-</ul>
+  <li> <a href="https://perlzemi.com/blog/20180813153411.html"> Installing Perl on Linux </a> </ li>
+</ ul>
 
-Webシステム開発を行う場合は、コアPerlではなく、上記手順でインストールしたものを使います。一番大きな理由は、CPANというサイトからモジュールをインストールするのに、ユーザー環境にPerlをインストールしておくのが、簡単で便利だからです。
+When developing a Web system, use the one installed in the above procedure instead of the core Perl. The biggest reason is that it's easy and convenient to have Perl installed in your environment to install modules from a site called CPAN.
 
-また、Perlだけのアップグレードをすることも、システムPerlに依存せずにできます。
+You can also upgrade Perl-only without relying on the system Perl.
 
-<h3>Mojoliciousのインストール</h3>
+<h3> Install Mojolicious </ h3>
 
-最後に、LinuxへのPerlのインストールでインストールしたcpanmというツールを使ってMojoliciousをインストールします。
+Finally, install Mojolicious using a tool called cpanm that you installed when you installed Perl on Linux.
 
 <pre>
 cpanm Mojolicious
-</pre>
+</ pre>
 
-Webシステム開発環境の構築お疲れさまでした。
+Thank you for building the Web system development environment.
 
-(UbuntuとDebianにおけるCentOSにおけるyumに該当する部分を記述できる方、お手伝い募集中)
+(Those who can describe the part corresponding to yum in CentOS in Ubuntu and Debian, we are looking for help)

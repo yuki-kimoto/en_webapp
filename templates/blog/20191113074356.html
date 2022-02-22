@@ -1,71 +1,71 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/" class="bread-home">
-      <span itemprop="name">
-        <img src="/images/bread/home.png" alt="Mojoliciousスタートアップ">
-      </span>
+      <span itemprop = "name">
+        <img src = "/ images / bread / home.png" alt = "Mojolicious Startup">
+      </ span>
     </a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     here
-  </li>
-</ol>
-<h2>データベースのテーブル名とフィールド名の命名規約</h2>
+  </ li>
+</ ol>
+<h2> Database table and field name naming conventions </ h2>
 
-Mojoliciousスタートアップでは、ビジネスのスタートアップを始める方に向けて、データベースのテーブル名とフィールド名の命名規約をひとつ示したいと考えています。
+At Mojolicious Startup, we want to show you one naming convention for database table names and field names for those who are starting a business.
 
-データベースのテーブル名と列名は自由に決めることができますが、プロジェクトで、一つの命名規約があれば、一貫して名前をつけることができ、悩むことが少なくなります。
+You can freely decide the table name and column name of the database, but if you have one naming convention in your project, you can name it consistently and you will not have to worry about it.
 
-良くまとまっているものとして、以下の記事を発見しましたので、これを翻訳して、紹介します。YiiはPHPのWebフレームワークのひとつです。
+I found the following article as a well-organized one, so I will translate it and introduce it. Yii is one of PHP's web frameworks.
 
 <blockquote>
-<a href="https://www.yiiframework.com/wiki/227/guidelines-for-good-schema-design">よいスキーマデザインのためのガイドライン - YiiフレームワークWiki</a>
-</blockquote>
+<a href="https://www.yiiframework.com/wiki/227/guidelines-for-good-schema-design"> Guidelines for Good Schema Design-Yii Framework Wiki </a>
+</ blockquote>
 
-YiiとあるところはMojolicious、ActiveRecordとあるところはPerlのDBIあるいはO/Rマッパーと読み替えてください。Mojoliciousスタートアップ用に、各所の補足を入れました。
+Read Yii for Mojolicious and ActiveRecord for Perl's DBI or O / R mapper. I've added some supplements for Mojolicious startups.
 
 <ul>
-  <li>複数形ではなく単数形でデータベースのテーブルに名前を付ける</ li>
-  <li>フィールド名の前にDBテーブル名を追加しない</ li>
-  <li>モデルクラス名にテーブルプレフィックスを含めない</ li>
-  <li>テーブルのID列に「id」という名前を付けます</ li>
-  <li>意味のある主キー名を避ける</ li>
-  <li>データベーススキーマで外部キーの関係を定義する</ li>
-  <li>「id」で終わる外部キーフィールドに名前を付ける</ li>
-  <li>単数形/複数形の性質を反映する名前関係を行う</ li>
-</ul>
+  <li> Name database tables in singular rather than plural </ li>
+  <li> Do not add DB table name before field name </ li>
+  <li> Do not include table prefix in model class name </ li>
+  <li> Name the ID column of the table "id" </ li>
+  <li> Avoid meaningful primary key names </ li>
+  <li> Define foreign key relationships in the database schema </ li>
+  <li> Name foreign key fields ending in "id" </ li>
+  <li> Perform name relationships that reflect the properties of the singular / plural </ li>
+</ ul>
 
-<h3>初めに</h3>
+<h3> Introduction </ h3>
 
-事実上、すべてのYiiアプリケーションはデータベース上に構築され、YiiはDBに対処する方法が非常に柔軟ですが、設計をうまく選択することによって、他の設計よりも便利になります。
+Virtually all Yii applications are built on a database, and Yii is very flexible in how to deal with DBs, but good design choices make it more convenient than other designs.
 
-最初に、そして最も広く、YiiアプリケーションはActiveRecordを非常に頻繁に使用するため、設計上の考慮事項は、複雑なSQLクエリを作成する人間ではなく、ActiveRecordの使用の最適化を中心に展開します。実際、これらの設計ノートの多くは、SQLに適したスキーマを作成するためのベストプラクティスと直接矛盾しています。
+First, and most broadly, Yii applications use ActiveRecord very often, so design considerations revolve around optimizing ActiveRecord usage rather than the person writing complex SQL queries. .. In fact, many of these design notes are in direct conflict with best practices for creating SQL-friendly schemas.
 
-しかし、これらのベストプラクティスの大部分は、他の人が読み取って理解できるコードを作成することに関するものです。ネーミングは意味を伝えますが、一貫性のない規則によって、従うのがはるかに難しくなります。
+However, most of these best practices are about writing code that others can read and understand. Naming conveys meaning, but inconsistent rules make it much harder to follow.
 
-これは、フォーラムや#yiiチャンネルで助けを求めている場合に特に当てはまります。良い意味を反映しない奇妙な名前を使用すると、コードが何をしているのかを明確にする多くの質問が得られます。あなたの実際の問題。
+This is especially true if you are seeking help on the forums or the #yii channel. Using strange names that don't reflect good meanings gives you many questions that clarify what your code is doing. Your actual problem.
 
-一貫性が重要です。
+Consistency is important.
 
-ただし、これらはルールではなく単なるガイドラインであり、従わなくてもコードは機能します。しかし、それらを採用すれば、より簡単な道が開けます。
+However, these are just guidelines, not rules, and your code will work if you don't follow them. But adopting them opens up an easier path.
 
-<b>補足</b>
+<b> Supplement </ b>
 
-ActiveRecordは、Yiiに含まれているデフォルトのO/Rマッパーです。Mojoliciousスタートップの場合は、PerlのDBIあるいはO/Rマッパーと読み替えてください。
+ActiveRecord is the default O / R mapper included with Yii. For Mojolicious Startop, read Perl's DBI or O / R Mapper.
 
-<h3>データベーステーブルに複数ではなく単数で名前を付ける</h3>
+<h3> Name database tables singular instead of plural </ h3>
 
-SQLテーブルは多くのものを保持していると考えられますが、モデルはそれらの1つに過ぎません。$model = new Comments()を見るのは奇妙に思えます。関係を定義するときなどに、この奇妙さが再び現れます。
+SQL tables are likely to hold many things, but the model is just one of them. It seems strange to see $ model = new Comments (). This strangeness reappears, such as when defining relationships.
 
-テーブルを「コメントたち(comments)」ではなく「コメント(comment)」と呼び、「請求書たち(invoices)」ではなく「請求書(invoice)」と呼んでください。デルクラス名(コメント、請求書)にそのまま反映します。
+Call the table "comments" instead of "comments" and "invoices" instead of "invoices". It will be reflected as it is in the Dell class name (comment, invoice).
 
-DBスキーマを絶対に変更できない場合は、少なくともYiiモデルクラス名を変更して適切なケースを反映しますが、コードに余分なコメントを追加して、ユーザーにこの不一致を意識させます。
+If you can never change the DB schema, at least change the Yii model class name to reflect the appropriate case, but add extra comments to the code to make the user aware of this discrepancy.
 
-<b>補足</b>
+<b> Supplement </ b>
 
-要点は、テーブル名を単数形にするということです。
+The point is to make the table name singular.
 
 <pre>
 comment # OK
@@ -73,168 +73,168 @@ comments # Not OK
 
 invoice # OK
 invoices # Not OK
-</pre>
+</ pre>
 
-<h3>フィールド名の前にDBテーブル名を追加しないでください</h3>
+<h3> Do not add the DB table name before the field name </ h3>
 
-この方法は、従来のSQLスキーマ設計では一般的ですが、ActiveRecordを使用する場合は面倒です。カテゴリテーブルの例です。
-
-<pre>
--- NO                              -- YES
-create table category (            create table category(
-    category_id    INTEGER ...,        id    INTEGER ...,
-    category_name  VARCHAR ...,        name  VARCHAR ...,
-    category_value INTEGER             value INTEGER
-);                                 );
-</pre>
+This method is common in traditional SQL schema design, but it can be tedious when using ActiveRecord. An example of a category table.
 
 <pre>
-<?php
-$category = new Category();
-// YUCK                            // BETTER
-$category->category_id             $category->id
-$category->category_name           $category->name
-$category->category_value          $category->value
-</pre>
-
-「長い」方法で行うと、手作りのSQLクエリが少し読みやすくなりますが、ActiveRecordでの使用はあまり便利ではありません。
-
-<b>補足</b>
-
-要点は、フィールド名の前に、テーブル名を付けないということです。
-
-<h3>モデルクラス名にテーブルプレフィックスを含めないでください</h3>
-
-Yiiはテーブルプレフィックスの概念をサポートしています。これは、すべてのアプリケーションが単一のデータベースを共有する共有ホスティング環境で役立ちます。ブログのテーブル名にblog_を、タイムキーピングアプリケーションのテーブル名にtime_を付けるなどして、すべて競合することなく同じデータベースに格納できます。
-
-プレフィックスtbl_は、多くのチュートリアルやサンプルでよく見られます。
-
-ただし、競合を回避する必要性は同じではないため、クラスにこれらのプレフィックスを含めることはできません。ブログアプリケーションは時間管理アプリケーションとは異なります。
+--NO --YES
+create table category (create table category (create table category (create table category)
+    category_id INTEGER ..., id INTEGER ...,
+    category_name VARCHAR ..., name VARCHAR ...,
+    category_value INTEGER value INTEGER
+););
+</ pre>
 
 <pre>
-class TblComment extends CActiveRecord {       // NO
-class Comment extends CActiveRecord {          // YES
-</pre>
+<? php
+$ category = new Category ();
+// YUCK // BETTER
+$ category-> category_id $ category-> id
+$ category-> category_name $ category-> name
+$ category-> category_value $ category-> value
+</ pre>
 
-コードの至る所に接頭辞を見るのは非常に気が散ります。
+The "long" way makes handmade SQL queries a little easier to read, but it's not very convenient to use with ActiveRecord.
 
-<b>補足</b>
+<b> Supplement </ b>
 
-これは、ActiveRecordのクラスについての説明なので、もし仮に、Perlでテーブル名に対応するモデル名をつける場合に、テーブルプレフィックスを含めないようにするという意味です。
+The point is that you don't precede the field name with the table name.
 
-<h3>テーブルのID列に「id」という名前を付けてください</h3>
+<h3> Do not include the table prefix in the model class name </ h3>
 
-多くのテーブルには、独自の独立した単一列の一意のプライマリキーがあり(int NOT NULL AUTO_INCREMENT PRIMARY KEYが一般的な例です)、id(commentidまたはpostidではない)という名前の場合、少しスムーズに動作します。
+Yii supports the concept of table prefixes. This is useful in a shared hosting environment where all applications share a single database. You can store them all in the same database without conflict, such as by adding blog_ to the table name of the blog and time_ to the table name of the timekeeping application.
 
-Yiiはデータベーススキーマを読み取って主キーを特定しますが、システムの他の部分は従うことができず、idであるキーに明示的に依存することはできません。
+The prefix tbl_ is common in many tutorials and samples.
 
-例：CArrayDataProviderはキーがidであると想定しています。keyField属性でオーバーライドできますが、最初から、それを必要とすることを避ける方が良いです。
-
-たとえば、テーブルに複数列のプライマリキーがある場合、またはテーブルのプライマリキーが別のテーブルのIDに対する外部キーである場合、このルールは適用されません。
-
-<b>補足</b>
-
-要点は、行を識別するIDは、idという名前にしましょうということです。
-
-<h3>意味のある主キー名を避ける</h3>
-
-古典的な設計ミスは、実際の意味を持つ主キーを持つテーブルを作成することです。この例では、ユーザーテーブルはユーザー名を主キーにします。
+However, you cannot include these prefixes in your class because the need to avoid conflicts is not the same. Blog applications are different from time management applications.
 
 <pre>
--- こんな風にはしないで
+class TblComment extends CActiveRecord {// NO
+class Comment extends CActiveRecord {// YES
+</ pre>
+
+Seeing the prefix everywhere in the code is very distracting.
+
+<b> Supplement </ b>
+
+This is a description of ActiveRecord classes, so if you give Perl a model name that corresponds to a table name, it means that you don't include the table prefix.
+
+<h3> Name the ID column of the table "id" </ h3>
+
+Many tables have their own independent, single-column, unique primary key (int NOT NULL AUTO_INCREMENT PRIMARY KEY is a common example), and for the name id (not commentid or postid), it's a bit smoother. It works.
+
+Yii reads the database schema to determine the primary key, but the rest of the system cannot follow and cannot explicitly depend on the key that is the id.
+
+Example: CArrayDataProvider assumes that the key is id. You can override it with the keyField attribute, but it's better to avoid needing it from the beginning.
+
+For example, if a table has a multi-column primary key, or if the table's primary key is a foreign key to the ID of another table, this rule does not apply.
+
+<b> Supplement </ b>
+
+The point is that the ID that identifies the row should be named id.
+
+<h3> Avoid meaningful primary key names </ h3>
+
+A classic design mistake is to create a table with a primary key that has real meaning. In this example, the user table uses the user name as the primary key.
+
+<pre>
+--Don't do it like this
 CREATE TABLE user (
-    name   VARCHAR(16) PRIMARY KEY,  -- bad idea
-    email  VARCHAR...
+    name VARCHAR (16) PRIMARY KEY, --bad idea
+    email VARCHAR ...
     ...
 )
-</pre>
+</ pre>
 
-これには2つの難点があります。
+This has two drawbacks.
 
-このフィールドを4バイトの整数ではなく16文字で構成しているため、他のフィールドからこのフィールドを参照するのははるかに効率的です。これは、多くの参照がある大規模なアプリケーションで実際のパフォーマンスの問題になる可能性があります。
+It's much more efficient to reference this field from other fields because it consists of 16 characters instead of a 4-byte integer. This can be a real performance issue for large applications with many references.
 
-このシステムで外部キー制約が有効になっている場合、ユーザーがユーザー名を変更することは非常に困難です。テーブルフィールドとすべての参照を同時に変更する必要があり、それが可能であれば費用がかかります。
-はるかに良いのは、不可欠な主キーを作成し、名前を一意にすることです。
+It is very difficult for a user to change a user name if foreign key constraints are enabled on this system. You need to change the table fields and all references at the same time, which is costly if possible.
+Much better is to create an essential primary key and make the name unique.
 
 <pre>
--- much better
+--much better
 CREATE TABLE user (
-   id     INTEGER PRIMARY KEY AUTO_INCREMENT,
-   name   VARCHAR(32) NOT NULL UNIQUE,
-   email  ...
+   id INTEGER PRIMARY KEY AUTO_INCREMENT,
+   name VARCHAR (32) NOT NULL UNIQUE,
+   email ...
    ...
 );
-</pre>
+</ pre>
 
-この方法では、個人のユーザー名を変更すると、この1つのレコードのみが更新されます。
+With this method, if you change an individual's username, only this one record will be updated.
 
-<b>補足</b>
+<b> Supplement </ b>
 
-要点は、意味がなく行を識別するためだけのidを持たせて、それをプライマリーキーで、オートインクリメントにしましょうということです。意味のある主キー(この例ではname)には、ユニーク制約を設定します。
+The point isLet's have an id just to identify the row without taste, and make it an auto-increment with the primary key. Set a unique constraint on the meaningful primary key (name in this example).
 
-<h3>データベーススキーマで外部キー関係を定義する</h3>
+<h3> Define foreign key relationships in the database schema </ h3>
 
-ほとんどのデータベースでは、データベースがテーブル間の関係を定義できるため、このフィールドには他のテーブルのプライマリキーを指すIDが保持されます。これらは外部キーであり、他の誰かがそれを指している場合に行を削除できないようにすることで、参照整合性を提供します。
+In most databases, the database can define relationships between tables, so this field holds an ID that points to the primary key of another table. These are foreign keys and provide referential integrity by preventing rows from being deleted if someone else points to them.
 
-MySQLのInnoDBは外部キー制約を強制します。MyISAMではそれらを定義できますが、強制しません。 Yiiはスキーマからこれらの関係を読み取る方法を知っており、Gii / Giixツールは自動的に関係を作成します。
+MySQL's InnoDB enforces foreign key constraints. MyISAM allows you to define them, but it doesn't enforce them. Yii knows how to read these relationships from the schema, and the Gii / Giix tool will automatically create the relationships.
 
-しかし、Yiiがそれらを考慮しなくても、外部キーはデータベースの参照整合性を維持するための重要な部分です。それらについて学ぶ方法に関する多くのチュートリアルがウェブ上にあります。
+But even if Yii doesn't consider them, foreign keys are an important part of maintaining database referential integrity. There are many tutorials on the web on how to learn about them.
 
-<b>補足</b>
+<b> Supplement </ b>
 
-要点は、もし、データベーススキーマで外部キー制約をつける場合は、O/Rマッパー側ではなくって、データベース側でつけてくださいという意味です。
+The point is that if you want to put a foreign key constraint in the database schema, put it on the database side, not on the O / R mapper side.
 
-<h3>「id」で終わる外部キーフィールドに名前を付けてる</h3>
+<h3> Name foreign key fields ending in "id" </ h3>
 
-前のメモに関連して、ユーザーのIDを保持するフィールドがある場合、userではなくuseridフィールドを呼び出します。これは、テーブルに含めるすべての外部キーについて、ほぼ確実にリレーションを定義することを望むためです。
+In connection with the previous note, if there is a field that holds the user's ID, call the userid field instead of user. This is because we almost certainly want to define a relation for every foreign key we include in the table.
 
-Yiiでは、クラス変数、DBフィールド、仮想属性、リレーションはすべて単一のネームスペースを共有するため、$model->userをテーブルの外部キーとリレーションの両方にすることはできません。
+In Yii, class variables, DB fields, virtual attributes, and relationships all share a single namespace, so $ model-> user cannot be both a table foreign key and a relationship.
 
-FKユーザーIDを呼び出すことにより、$model->userのBELONGS_TO関係が自然かつ簡単に形成されます。
+By calling the FK user ID, the BELONGS_TO relationship of $ model-> user is formed naturally and easily.
 
 <pre>
 class Post extends CActiveRecord {
 
-   public function relations()
+   public function relations ()
    {
-       return array(
-          'user' => array(self::BELONGS_TO, 'User', 'userid')
+       return array (
+          'user' => array (self :: BELONGS_TO,'User','userid')
        );
    }
-</pre>
+</ pre>
 
-注：idの代わりにIdまたは_idを使用することを好む人もいます。これは厳密には個人的な好みの問題ですが、一貫している必要があります。
+Note: Some people prefer to use Id or _id instead of id. This is strictly a matter of personal taste, but it needs to be consistent.
 
-<b>補足</b>
+<b> Supplement </ b>
 
-要点は、外部キーの名前は、テーブル名の後ろに「id」または「Id」または「_id」をつけて、命名規則を一貫しましょうということです。Mojoliciousスタートアップでは、外部キーの名前として「_id」をテーブル名の後ろにつける方法を使うことにします。
+The point is that foreign key names should be followed by "id" or "Id" or "_id" to ensure consistent naming conventions. For Mojolicious startups, we'll use the method of prefixing the table name with "_id" as the name of the foreign key.
 
-<h3>単数/複数の性質を反映する名前関係を行う</h3>
+<h3> Perform name relationships that reflect singular / plural properties </ h3>
 
-一貫性というテーマを継続し、コードを他の人が読みやすくするために、関係は名前に単数/複数を反映する必要があります。
-
-<pre>
-HAS_ONE - 単一のモデルを返します：singular
-BELONGS_TO - 単一のモデルを返します：singular
-HAS_MANY - モデルの配列を返します：複数形
-MANY_MANY - モデルの配列を返します：複数形
-</pre>
-
-配列を返すリレーションの場合、モデルは1つだけかもしれませんが、配列であるという事実が複数名を保証することに注意してください。
-
-リレーションが配列を返すのかモデルを返すのかを調べるだけで、いつでも通知できるはずです。
+Relationships should reflect the singular / plural in the name in order to continue the theme of consistency and make the code easier for others to read.
 
 <pre>
-$model->post
-$model->comments
-$model->author
-$model->members
-</pre>
+HAS_ONE-returns a single model: singular
+BELONGS_TO-returns a single model: singular
+HAS_MANY-Returns an array of models: plural
+MANY_MANY-returns an array of models: plural
+</ pre>
 
-調べる必要がある場合、コードの読み取りと保守がはるかに難しくなります。
+For relations that return an array, there may be only one model, but keep in mind that the fact that it is an array guarantees multiple names.
 
-<b>補足</b>
+You should always be able to tell if the relation returns an array or a model.
 
-これは、ActiveRecordの1対1、1対多、多対1、多対多を定義するときのメソッド名の命名規則についての話です。
+<pre>
+$ model-> post
+$ model-> comments
+$ model-> author
+$ model-> members
+</ pre>
 
-もしPerlのO/Rマッパーが、類似の機能を持っていた場合は、参考にできます。
+The code is much harder to read and maintain if you need to look it up.
+
+<b> Supplement </ b>
+
+This is a story about method name naming conventions when defining ActiveRecord one-to-one, one-to-many, many-to-one, and many-to-many.
+
+If Perl's O / R mapper had similar functionality, you can refer to it.
