@@ -1,18 +1,18 @@
-<h2> Frequently Asked Questions </ h2>
+<h2> Frequently Asked Questions </h2>
 
-<h3> Is there a way to automatically set per-page routing? </ H3>
+<h3> Is there a way to automatically set per-page routing? </H3>
 
-If you use a module called Mojolicious :: Plugin :: AutoRoute, you can simply place a template and it will automatically create a route for you.
+If you use a module called Mojolicious::Plugin::AutoRoute, you can simply place a template and it will automatically create a route for you.
 
 <pre>
 #Mojolicious
-$ self-> plugin ('AutoRoute');
+$self->plugin('AutoRoute');
 
-#Mojolicious :: Lite
+#Mojolicious::Lite
 plugin'AutoRoute';
 
 #Option
-plugin'AutoRoute', route => $ r;
-</ pre>
+plugin'AutoRoute', route => $r;
+</pre>
 
-<a href="https://perlzemi.com/blog/20130731137527.html"> Automatically generate routing by placing files --Mojolicious :: Plugin :: AutoRoute </a>
+<a href="https://perlzemi.com/blog/20130731137527.html"> Automatically generate routing by placing files --Mojolicious::Plugin::AutoRoute</a>

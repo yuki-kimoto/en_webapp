@@ -1,74 +1,74 @@
-<h2> Validation of membership registration form </ h2>
+<h2> Validation of membership registration form </h2>
 
 Let's write the validation process of the membership registration form. Validation is the process of verifying that the data entered by the user is correct.
 
-<h3> Get the sent user information </ h3>
+<h3> Get the sent user information </h3>
 
-The sent user information is obtained from the parameters. Use the <a href="https://perlzemi.com/blog/20110501130707.html"> param method </a> to get the parameters that contain the user information.
+The sent user information is obtained from the parameters. Use the <a href="https://perlzemi.com/blog/20110501130707.html"> param method</a> to get the parameters that contain the user information.
 
-Let's receive the POSTed information from <a href="/blog/20200107082558.html"> Membership Registration Form </a>. In this process, it is confirmed in advance whether it is POST and it is a temporary registration process.
+Let's receive the POSTed information from <a href="/blog/20200107082558.html"> Membership Registration Form</a>. In this process, it is confirmed in advance whether it is POST and it is a temporary registration process.
 
 <pre>
 <%
   #Processing a POST request
-  if ($ self-> method eq'POST') {
+  if ($self->methodeq'POST') {
     # Processing method
-    my $ op = param ('op');
-    $ op ='' unless defined $ op;
+    my $op = param ('op');
+    $op ='' unless defined $op;
     
     # Temporary registration processing
-    if ($ op eq'register') {
+    if ($op eq'register') {
       #Get user information
       # USER ID
-      my $ code = param ('code');
+      my $code = param ('code');
       
       # password
-      my $ password = param ('password');
+      my $password = param ('password');
       
       # email address
-      my $ mail = param ('mail');
+      my $mail = param ('mail');
     }
   }
 %>
-</ pre>
+</pre>
 
-<h3> User ID validation </ h3>
+<h3> User ID validation </h3>
 
 Make sure your user ID is correct. The correct user ID is defined by the Mojolicious startup as follows:
 
 <ul>
-  <li> User ID specified </ li>
-  <li> The user ID must consist of at least one ASCII code alphanumerical and an underscore </ li>
-  <li> The length of the user ID is within the limit of the length of the user ID that can be used by the service </ li>
-  <li> The user ID does not overlap with the user ID of the existing user </ li>
-  <li> The user ID does not overlap with the user ID of a user waiting for user authentication with a different email address </ li>
-</ ul>
+  <li> User ID specified </li>
+  <li> The user ID must consist of at least one ASCII code alphanumerical and an underscore </li>
+  <li> The length of the user ID is within the limit of the length of the user ID that can be used by the service </li>
+  <li> The user ID does not overlap with the user ID of the existing user </li>
+  <li> The user ID does not overlap with the user ID of a user waiting for user authentication with a different email address </li>
+</ul>
 
 Note that the user ID must be unique, so you need to access the database to check this.
 
 Let's write the validation of the user ID. If it is not correct, I try to add it to the error information.
 
-<h4> User ID is specified </ h4>
+<h4> User ID is specified </h4>
 
-First of all, make sure your user ID is not empty. Save the errors in a <a href="https://perlzemi.com/blog/20180208151809.html"> hash reference </a> called $ errors. The length of the string can be obtained with the <a href="https://perlzemi.com/blog/20080926122245.html"> length function </a>.
+First of all, make sure your user ID is not empty. Save the errors in a <a href="https://perlzemi.com/blog/20180208151809.html"> hash reference</a> called $errors. The length of the string can be obtained with the <a href="https://perlzemi.com/blog/20080926122245.html"> length function</a>.
 
 <pre>
-my $ errors = {};
-if (length $ user_code> 0) {
+my $errors = {};
+if (length $user_code> 0) {
   
 }
 else {
   #Error handling
-  $ errors-> {user_code} ='Please specify the user ID. ';
+  $errors->{user_code} ='Please specify the user ID. ';
 }
 
-</ pre>
+</pre>
 
-<h4> User ID consists of one or more ASCII code alphanumers and underscores </ h4>
+<h4> User ID consists of one or more ASCII code alphanumers and underscores </h4>
 
 Use Perl regular expressions to check that your user ID consists of at least one ASCII code alphanumerical and one underscore character (a-zA-Z0-9_).
 
-<a href="https://perlzemi.com/blog/20100827127859.html"> Regular expression </a> can be expressed by either of the following two methods. Write it obediently with <a href="https://perlzemi.com/blog/20200114103559.html"> character class </a>, or use a character class that represents a word character composed of Perl's ASCII code. ..
+<a href="https://perlzemi.com/blog/20100827127859.html"> Regular expression</a> can be expressed by either of the following two methods. Write it obediently with <a href="https://perlzemi.com/blog/20200114103559.html"> character class</a>, or use a character class that represents a word character composed of Perl's ASCII code. ..
 
 <pre>
 # Write obediently with a character class
@@ -76,39 +76,39 @@ Use Perl regular expressions to check that your user ID consists of at least one
 
 # Use a character class that represents a word character composed of Perl's ASCII code
 ^ \ p {PosixWord} + $
-</ pre>
+</pre>
 
 Let's write it in Perl code.
 
 <pre>
 
 # Perl word character (a-zA-Z0-9_)
-if ($ user_code = ~ / ^ \ p {PosixWord} + $ /) {
+if ($user_code = ~ / ^ \ p {PosixWord} + $/) {
   
 }
 else {
   #Error handling
-  $ errors-> {user_code} ='The characters that can be used for the user ID are "a-zA-Z0-9_". ';
+  $errors->{user_code} ='The characters that can be used for the user ID are "a-zA-Z0-9_". ';
 }
-</ pre>
+</pre>
 
-<h4> The length of the user ID is within the limit of the length of the user ID that can be used in the service </ h4>
+<h4> The length of the user ID is within the limit of the length of the user ID that can be used in the service </h4>
 
 Check that the user ID length is within the user ID length limit available for the service.
 
 In the service called Twitter, which is used globally, the user ID is limited to 15 characters.
 
-Mojolicious startup will use this as a reference to limit the length of the user ID to 15 characters or less. The length of the string can be obtained with the <a href="https://perlzemi.com/blog/20080926122245.html"> length function </a>.
+Mojolicious startup will use this as a reference to limit the length of the user ID to 15 characters or less. The length of the string can be obtained with the <a href="https://perlzemi.com/blog/20080926122245.html"> length function</a>.
 
 <pre>
 #Username length limit 15 characters
-if (length $ user_code <= 15) {
+if (length $user_code <= 15) {
   
 }
 else {
   #Error handling
-  $ errors-> {user_code} ='The maximum number of characters that can be used for a user ID is 15 characters. ';
+  $errors->{user_code} ='The maximum number of characters that can be used for a user ID is 15 characters. ';
 }
-</ pre>
+</pre>
 
 (Writing)

@@ -1,18 +1,18 @@
-= $ dbi-> model ('book')-> select (
+= $dbi->model('book')->select(
   ['id','name'],
-  append => "limit $ offset, $ count_per_page",
-  where => $ where
-)-> all;
-my $ total = $ dbi-> model ('book')-> select ('count (*)', where => $ where)-> value;
-</ pre>
+  append => "limit $offset, $count_per_page",
+  where => $where
+)->all;
+my $total = $dbi->model('book')->select('count (*)', where => $where)->value;
+</pre>
 
-<h4> Is it possible to leave the other query strings in the URL and change only the page number? </ h4>
+<h4> Is it possible to leave the other query strings in the URL and change only the page number? </h4>
 
 The sample described here supports changing only the page number.
 
-Use url_with instead of url_for. The point is to pass the hash reference "{page => $ page}" as an argument of the query method.
+Use url_with instead of url_for. The point is to pass the hash reference "{page => $page}" as an argument of the query method.
 
-<h4> Is it possible to make pagination into parts? </ H4>
+<h4> Is it possible to make pagination into parts? </H4>
 
 Yes, you may want to display pagination up and down or share it with other pages.
 
@@ -24,52 +24,52 @@ Receive the pager using stash.
 
 <pre>
   <%
-    my $ pager = stash ('pager');
+    my $pager = stash ('pager');
     
     # current page
-    my $ page = $ pager-> current_page;
+    my $page = $pager->current_page;
     
     #Set the number of page navigation
-    $ pager-> pages_per_navigation (10);
+    $pager->pages_per_navigation(10);
     
     # Previous page
-    my $ previous_page = $ pager-> previous_page;
+    my $previous_page = $pager->previous_page;
     
     # Following page
-    my $ next_page = $ pager-> next_page;
+    my $next_page = $pager->next_page;
     
     # the first page
-    my $ first_page = $ pager-> first_page;
+    my $first_page = $pager->first_page;
     
     #Last page
-    my $ last_page = $ pager-> last_page;
+    my $last_page = $pager->last_page;
 
     #Get the page number around
-    my @nav_pages = $ pagesr-> pages_in_navigation;
+    my @nav_pages = $pagesr->pages_in_navigation;
   %>
-  % if ($ first_page! = $ last_page) {
+  %if ($first_page! = $last_page) {
     <div class = "pagenation">
-      <a href="<%=url_with-> query ({page => undef})%> "> To the beginning </a>
-      % if ($ previous_page) {
-        <a href="<%=url_with-> query ({page => $ previous_page})%> "> Previous </a>
+      <a href="<%=url_with->query({page => undef})%> "> To the beginning</a>
+      %if ($previous_page) {
+        <a href="<%=url_with->query({page => $previous_page})%> "> Previous</a>
       %}
-      % for my $ nav_page (@nav_pages) {
-        % if ($ nav_page eq $ page) {
-          <span> <% = $ nav_page%> </a>
+      %for my $nav_page (@nav_pages) {
+        %if ($nav_page eq $page) {
+          <span> <%= $nav_page%></a>
         %} else {
-          <a href="<%=url_with-> query ({page => $ nav_page})%> "> <% = $ nav_page%> </a>
+          <a href="<%=url_with->query({page => $nav_page})%> "> <%= $nav_page%></a>
         %}
       %}
-      % if ($ next_page) {
-        <a href="<%=url_with-> query ({page => $ next_page})%> "> Next </a>
+      %if ($next_page) {
+        <a href="<%=url_with->query({page => $next_page})%> "> Next</a>
       %}
-      <a href="<%=url_with-> query ({page => $ last_page})%> "> To the end </a>
-    </ div>
+      <a href="<%=url_with->query({page => $last_page})%> "> To the end</a>
+    </div>
   %}
-</ pre>
+</pre>
 
 The user side should do the following.
 
 <pre>
-% = include'include / pagenation', pager => $ pager;
-</ pre>
+%= include'include / pagenation', pager => $pager;
+</pre>

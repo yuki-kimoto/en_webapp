@@ -1,23 +1,23 @@
-<h2> Message box when new creation or update is successful </ h2>
+<h2> Message box when new creation or update is successful </h2>
 
 This is a sample message box when a new creation or update is successful.
 
 <ul>
-  <li> jQuery required </ li>
-  <li> Implemented close button </ li>
-  <li> The color is green </ li>
-  <li> Sample of how to use flash method </ li>
-  <li> Supports display of favorite messages </ li>
-  <li> Display at the top of the page instead of modal </ li>
-</ ul>
+  <li> jQuery required </li>
+  <li> Implemented close button </li>
+  <li> The color is green </li>
+  <li> Sample of how to use flash method </li>
+  <li> Supports display of favorite messages </li>
+  <li> Display at the top of the page instead of modal </li>
+</ul>
 
 If the new or updated form is successful, the redirect typically takes you to the page you want to return to. At this time, if you use the flash method, you can set a message that can be saved only once for the connection after redirect.
 
 <pre>
-  $ self-> flash (success_message =>'newly created');
-  $ self-> redirect_to ("/ foo / bar");
+  $self->flash(success_message =>'newly created');
+  $self->redirect_to("/ foo / bar");
   return;
-</ pre>
+</pre>
 
 This is the part where the message box is displayed. Display only if the flash method contains a message.
 
@@ -29,7 +29,7 @@ This is the part where the message box is displayed. Display only if the flash m
     border: 1px solid #ccddcc;
     border-radius: 5px;
     color: # 336633;
-    width: calc (100% -15px);
+    width: calc (100%-15px);
     margin: 10px auto;
   }
   .success_message_close {
@@ -40,16 +40,16 @@ This is the part where the message box is displayed. Display only if the flash m
     cursor: pointer;
     font-size: 18px;
   }
-</ style>
+</style>
 
-    % if (my $ success_message = flash ('success_message')) {
+    %if (my $success_message = flash ('success_message')) {
       <div class = "success_message">
         <div class = "success_message_close">
-          <span class = "success_message_close_button" onclick = "$ (this) .closest ('. success_message'). hide ()"> × </ span>
-        </ div>
+          <span class = "success_message_close_button" onclick = "$(this) .closest ('. success_message'). hide ()"> × </span>
+        </div>
         <div class = "success_message_text">
-          <% = $ success_message%>
-        </ div>
-      </ div>
+          <%= $success_message%>
+        </div>
+      </div>
     %}
-</ pre>
+</pre>

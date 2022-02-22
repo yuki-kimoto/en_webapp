@@ -3,16 +3,16 @@
     <a itemprop="item" href="/" class="bread-home">
       <span itemprop = "name">
         <img src = "/ images / bread / home.png" alt = "Mojolicious Startup">
-      </ span>
-    </a>
+      </span>
+   </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     here
-  </ li>
-</ ol>
-<h2> "Perl + Mojolicious" Web application development with Sakura VPS 9th Try deploying a Web application </ h2>
+  </li>
+</ol>
+<h2> "Perl + Mojolicious" Web application development with Sakura VPS 9th Try deploying a Web application </h2>
 
 
 
@@ -22,11 +22,11 @@ If this is possible, all you have to do is prepare the environment, learn techni
 
 The web application is prepared and downloaded by me. Download this application and let it work.
 
-First of all, let's become a user called <b> webapp </ b>. Run the web application as the webapp user, not the root user.
+First of all, let's become a user called <b> webapp </b>. Run the web application as the webapp user, not the root user.
 
 <pre>
 su --webapp
-</ pre>
+</pre>
 
 Please try the following steps on the remote console. It is recommended to paste and execute the command using the paste button in the title bar at the top of the remote console. Each time you paste one command, press Enter to execute it.
 
@@ -35,75 +35,75 @@ curl -kL https://github.com/downloads/yuki-kimoto/webminiapp/webminiapp-0.01.tar
 tar xf webminiapp-0.01.tar.gz
 cd webminiapp-0.01
 ./webminiapp
-</ pre>
+</pre>
 
 There are 4 commands, so let's explain them in order. Please note that the first line is long, so I think it has multiple lines. It's one command.
 
-<h4> Web application download </ h4>
+<h4> Web application download </h4>
 
 The first thing to do is download the web application.
 
 <pre>
 curl -kL https://github.com/downloads/yuki-kimoto/webminiapp/webminiapp-0.01.tar.gz> webminiapp-0.01.tar.gz
-</ pre>
+</pre>
 
 The command curl is a command for downloading content on the Web.
 
 <pre>
 curl option URL
-</ pre>
+</pre>
 
-<B> -kL </ b> means to specify the option <b> -k </ b> and the option <b> -L </ b>. It has the same meaning as writing <b> -k -L </ b>. The <b> -k </ b> option means no secure connection, and <b> -L </ b> means redirect. You don't have to remember the deep meaning now. Hmmm is fine.
+<B> -kL </b> means to specify the option <b> -k </b> and the option <b> -L </b>. It has the same meaning as writing <b> -k -L </b>. The <b> -k </b> option means no secure connection, and <b> -L </b> means redirect. You don't have to remember the deep meaning now. Hmmm is fine.
 
-<B> & gt; </ b> at the end specifies the file name to output the content specified in the URL in the sense of redirecting.
+<B> & gt; </b> at the end specifies the file name to output the content specified in the URL in the sense of redirecting.
 
-This will create a file <b> webminiapp-0.01.tar.gz </ b> in your local directory.
+This will create a file <b> webminiapp-0.01.tar.gz </b> in your local directory.
 
-<h4> Extract downloaded files </ h4>
+<h4> Extract downloaded files </h4>
 
 Next, unzip the downloaded file.
 
 <pre>
 tar xf webminiapp-0.01.tar.gz
-</ pre>
+</pre>
 
 The tar command is a command for decompressing a file compressed in TAR format.
 
 <pre>
 tar option filename
-</ pre>
+</pre>
 
-The <b> x </ b> option is an option to decompress even if it is compressed in gz format, and <b> f </ b> means to do it for the file. ..
+The <b> x </b> option is an option to decompress even if it is compressed in gz format, and <b> f </b> means to do it for the file. ..
 
 There is also a zip format on Windows, but this is actually a format that combines archiving and compression of multiple files. In Linux, the tar format is used to combine multiple files into one file. This can be created with the tar command. Also, the gz format is often used for compression. This can be done with the gzip command.
 
-If the extension is <b> .tar.gz </ b>, it means that it was archived in TAR format with the tar command and compressed to gz format with the gzip command. The above command will create a directory called <b> webminiapp-0.01 </ b> that can be expanded.
+If the extension is <b> .tar.gz </b>, it means that it was archived in TAR format with the tar command and compressed to gz format with the gzip command. The above command will create a directory called <b> webminiapp-0.01 </b> that can be expanded.
 
 <pre>
 webminiapp-0.01
-</ pre>
+</pre>
 
-<h4> Change current directory </ h4>
+<h4> Change current directory </h4>
 
-The current directory can be changed with the <b> cd </ b> command. This is the same as Windows.
+The current directory can be changed with the <b> cd </b> command. This is the same as Windows.
 
 <pre>
 cd webminiapp-0.01
-</ pre>
+</pre>
 
-<h4> Run web application </ h4>
+<h4> Run web application </h4>
 
 Start the web application. You can start the web application with the following command:
 
 <pre>
 ./webminiapp
-</ pre>
+</pre>
 
 Then, please access the following URL. If "Hello World!" Is displayed, it is successful.
 
 <pre>
 http: // your IP address: 8080 /
-</ pre>
+</pre>
 
 You can now run the web application.
 
@@ -113,37 +113,37 @@ Normally, you specify it as follows.
 
 <pre>
 http: // your IP address
-</ pre>
+</pre>
 
 Actually, this is an abbreviation of the following description.
 
 <pre>
 http: // your IP address: 80
-</ pre>
+</pre>
 
 If omitted, it means that the port number is 80 for access.
 
-If you want to stop the application, you can stop it with the <b> --stop </ b> option.
+If you want to stop the application, you can stop it with the <b> --stop </b> option.
 
 <pre>
 ./webminiapp --stop
-</ pre>
+</pre>
 
 Also, the log will be output to the following file.
 
 <pre>
 log / production.log
-</ pre>
+</pre>
 
 You can also see the log by using the more command.
 
 <pre>
 more log / production.log
-</ pre>
+</pre>
 
 You can cancel the continuation by pressing q to advance the log with the space key.
 
-<h3> Access the web application on port number 80 </ h3>
+<h3> Access the web application on port number 80 </h3>
 
 But after all, I want to run a web application on port 80. There are several ways to do this, but here I'll try the simplest, but not applicable, port forward method.
 
@@ -153,7 +153,7 @@ This works as the root user.
 
 <pre>
 su ---
-</ pre>
+</pre>
 
 Execute the following command. Use the command iptables.
 
@@ -161,41 +161,41 @@ Execute the following command. Use the command iptables.
 iptables -t nat -I PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080
 /etc/rc.d/init.d/iptables save
 service iptables restart
-</ pre>
+</pre>
 
-<h4> Port Forward </ h4>
+<h4> Port Forward </h4>
 
 The port forwarding is set with the first command. Forward access to port 80 to 8080.
 
 <pre>
 iptables -t nat -I PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080
-</ pre>
+</pre>
 
-<h4> Save content </ h4>
+<h4> Save content </h4>
 
 The set contents are saved.
 
 <pre>
 /etc/rc.d/init.d/iptables save
-</ pre>
+</pre>
 
-<h4> Restart iptables </ h4>
+<h4> Restart iptables </h4>
 
 I'm restarting iptables.
 
 <pre>
 service iptables restart
-</ pre>
+</pre>
 
-<h4> Try to access on port 80 </ h4>
+<h4> Try to access on port 80 </h4>
 
 If Hello World is displayed at the following URL, it is successful. good job for today.
 
 <pre>
 http: // your IP address
-</ pre>
+</pre>
 
-<h4> Return the port forwarding setting to the bottom </ h4>
+<h4> Return the port forwarding setting to the bottom </h4>
 
 If you want to restore it, please execute the following command. I think I'll bring it back later.
 
@@ -203,6 +203,6 @@ If you want to restore it, please execute the following command. I think I'll br
 iptables -t nat -F PREROUTING
 /etc/rc.d/init.d/iptables save
 service iptables restart
-</ pre>
+</pre>
 
-You can restore the settings with the <b> -F </ b> option. The target means to specify the <b> nat </ b> table with the <b> -t </ b> option and return the <b> PREROUTING </ b> chain settings.
+You can restore the settings with the <b> -F </b> option. The target means to specify the <b> nat </b> table with the <b> -t </b> option and return the <b> PREROUTING </b> chain settings.

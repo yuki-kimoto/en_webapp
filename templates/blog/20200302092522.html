@@ -1,20 +1,20 @@
-<h2> Introduction to Web system development using Perl and Mojolicious </ h2>
+<h2> Introduction to Web system development using Perl and Mojolicious </h2>
 
-<b> Introduction to Web System Development </ b> is <a href="https://en.mojolicious.perlzemi.com/"> Mojolicious </a> <a href="https://en.perlzemi" An introductory course on web system development using the .com / "> Perl </a> web framework.
+<b> Introduction to Web System Development </b> is <a href="https://en.mojolicious.perlzemi.com/"> Mojolicious</a> <a href="https://en.perlzemi" An introductory course on web system development using the .com / "> Perl</a> web framework.
 
 Perl has a web framework called Mojolicious that makes it easy and flexible to create web applications.
 
 With Mojolicious, you can build a web system that has both development efficiency and performance.
 
-<h3> Features of Mojolicious </ h3>
+<h3> Features of Mojolicious </h3>
 
 Features of Mojolicious
 
-<h4> Embedded development server </ h4>
+<h4> Embedded development server </h4>
 
 Mojolicious has a development web server that can be booted in a Linux environment. With a development web server, you can run your web application in a local environment, so you can repeat your development work faster and improve your development efficiency.
 
-<h4> Prefork + asynchronous I / O production server </ h4>
+<h4> Prefork + asynchronous I / O production server </h4>
 
 Mojolicious has a performance-optimized production web server that can be booted in a Linux environment. Start the production server with prefork + asynchronous I / O.
 
@@ -22,46 +22,46 @@ By pre-forking the child process, we prepare for HTTP requests in advance. Prefo
 
 Each child process is asynchronous I / O and receives an HTTP request. Asynchronous I / O is a scalable implementation that the architecture can withstand over 10,000 simultaneous connections.
 
-<h4> Hot deployment </ h4>
+<h4> Hot deployment </h4>
 
 Hot deployment is a technology for restarting a production server without shutting it down completely. The server will be restarted to prevent loss of HTTP requests.
 
-<h4> Template </ h4>
+<h4> Template </h4>
 
 Mojolicious has a template to use for HTML output. It is possible to output dynamically using Perl code in the template.
 
 
-<h4> JSON support </ h4>
+<h4> JSON support </h4>
 
 Mojolicious's API supports JSON. It's easy to receive JSON with AJAX and draw JSON.
 
-<h4> Functions are limited to the Web layer </ h4>
+<h4> Functions are limited to the Web layer </h4>
 
 Mojolicious is a web framework with limited functionality at the web tier. Accessing the database is not included as a feature of the web framework.
 
-You are free to choose and use the database access module (eg <a href="https://dbix-en.custom.perlzemi.com/"> DBIx :: Custom </a>).
+You are free to choose and use the database access module (eg <a href="https://dbix-en.custom.perlzemi.com/"> DBIx::Custom</a>).
 
-<h4> Asynchronous I / O HTTP client </ h4>
+<h4> Asynchronous I / O HTTP client </h4>
 
 Mojolicious contains an HTTP client for asynchronous I / O. When throwing an HTTP request to an external service, you can send the HTTP request without blocking.
 
-<h4> Small web app </ h4>
+<h4> Small web app </h4>
 
-A module included with Mojolicious called Mojolicious :: Lite allows you to create a web app in three lines.
+A module included with Mojolicious called Mojolicious::Lite allows you to create a web app in three lines.
 
 <pre>
-use Mojolicious :: Lite;
-get'/' => sub {shift-> render (text =>'Hello')};
-app-> start;
-</ pre>
+use Mojolicious::Lite;
+get'/' => sub {shift->render(text =>'Hello')};
+app->start;
+</pre>
 
 This is the smallest web application that displays Hello on the screen.
 
-<h4> High compatibility and security security </ h4>
+<h4> High compatibility and security security </h4>
 
 Mojolicious is continuously maintained and will be fixed as soon as a security issue arises. Sometimes it breaks compatibility, but in principle it's backwards compatible and easy to upgrade. Perl itself is also very backwards compatible.
 
-<h4> Good compatibility with Perl's GC </ h3>
+<h4> Good compatibility with Perl's GC </h3>
 
 Perl has a GC optimized for average response speed called reference counting GC.
 
@@ -69,7 +69,7 @@ This works well with Mojolicious's asynchronous I / O web server.
 
 For asynchronous I / O, low average latency is very important for good performance, but Perl is optimized for average response speed.
 
-<h3> Would you like to start web system development with Perl & Mojolicious? </ H3>
+<h3> Would you like to start web system development with Perl & Mojolicious? </H3>
 
 Want to start web system development with Perl & Mojolicious?
 

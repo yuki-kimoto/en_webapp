@@ -1,48 +1,48 @@
-<h2> Error message box when new creation or update fails </ h2>
+<h2> Error message box when new creation or update fails </h2>
 
 This is a sample error message box when new creation or update fails.
 
 <ul>
-  <li> jQuery required </ li>
-  <li> Implemented close button </ li>
-  <li> The color is red </ li>
-  <li> Top error message is fixed </ li>
-  <li> Display an error message on each part of the form </ li>
-  <li> Display at the top of the page instead of modal </ li>
-</ ul>
+  <li> jQuery required </li>
+  <li> Implemented close button </li>
+  <li> The color is red </li>
+  <li> Top error message is fixed </li>
+  <li> Display an error message on each part of the form </li>
+  <li> Display at the top of the page instead of modal </li>
+</ul>
 
 First of all, it is assumed that the parameter items have been validated.
 
-Error messages are stored in a hash reference called $ errors when validation fails. You can check if there are any errors by using the keys function after dereferencing $ errors.
+Error messages are stored in a hash reference called $errors when validation fails. You can check if there are any errors by using the keys function after dereferencing $errors.
 
 <pre>
 # Error message
-my $ errors = {};
+my $errors = {};
 
-if ($ self-> req-> method eq'POST') {
-  my $ op = param ('op') //'';
+if ($self->req->methodeq'POST') {
+  my $op = param ('op') //'';
   
   # registration process
-  if ($ op eq'register') {
-    my $ title = param ('title');
-    my $ price = param ('price');
+  if ($op eq'register') {
+    my $title = param ('title');
+    my $price = param ('price');
     
     #Validation
-    unless (length $ title) {
-      $ errors-> {title} ='Enter a title';
+    unless (length $title) {
+      $errors->{title} ='Enter a title';
     }
 
-    unless (length $ price) {
-      $ errors-> {price} ='Enter the price';
+    unless (length $price) {
+      $errors->{price} ='Enter the price';
     }
     
     # What to do if validation is successful
-    unless (keys% $ errors) {
+    unless (keys%$errors) {
       
     }
   }
 }
-</ pre>
+</pre>
 
 If an error occurs, display a message at the top indicating that it is an error.
 
@@ -54,7 +54,7 @@ If an error occurs, display a message at the top indicating that it is an error.
     border: 1px solid #ddcccc;
     border-radius: 5px;
     color: # 663333;
-    width: calc (100% -15px);
+    width: calc (100%-15px);
     margin: 10px auto;
   }
   .error_message_close {
@@ -68,34 +68,34 @@ If an error occurs, display a message at the top indicating that it is an error.
   .error_message_item {
     color: red;
   }
-</ style>
+</style>
 
-% if (keys% $ errors) {
+%if (keys%$errors) {
   <div class = "error_message">
     <div class = "error_message_close">
-      <span class = "error_message_close_button" onclick = "$ (this) .closest ('.error_message'). hide ()"> × </ span>
-    </ div>
+      <span class = "error_message_close_button" onclick = "$(this) .closest ('.error_message'). hide ()"> × </span>
+    </div>
     <div class = "error_message_text">
       There is an error in the input item.
-    </ div>
-  </ div>
+    </div>
+  </div>
 %}
-</ pre>
+</pre>
 
 Display an error message for each item on the form as well. Use the defined-or operator to display the error message if it was defined, otherwise leave it blank.
 
 <pre>
-<form action = "<% = url_for%>" method = "POST">
+<form action = "<%= url_for%>" method = "POST">
   <div>
-    <b> Title: </ b>
-    <% = text_field'title'%> <span class = "error_message_item"> <% = $ errors-> {title} //''%> </ span>
-  </ div>
+    <b> Title: </b>
+    <%= text_field'title'%> <span class = "error_message_item"> <%= $errors->{title} //''%> </span>
+  </div>
   <div>
-    <b> Price: </ b>
-    <% = text_field'price'%> <span class = "error_message_item"> <% = $ errors-> {price} //''%> </ span>
-  </ div>
+    <b> Price: </b>
+    <%= text_field'price'%> <span class = "error_message_item"> <%= $errors->{price} //''%> </span>
+  </div>
 
-  % = hidden_field op =>'register';
-  <% = submit_button'New'%>
-</ form>
-</ pre>
+  %= hidden_field op =>'register';
+  <%= submit_button'New'%>
+</form>
+</pre>

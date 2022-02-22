@@ -1,8 +1,8 @@
-<h2> Create user table </ h2>
+<h2> Create user table </h2>
 
 Let's create a user table. A user table is a database table that stores user information. After creating the temporary registration user table, let's create the user table.
 
-<h3> What is a user table? </ H3>
+<h3> What is a user table? </H3>
 
 A user table is a database table that stores user information. You need the following fields:
 
@@ -10,25 +10,25 @@ The table name is "user".
 
 <table>
   <tr>
-    <th> Field </ th> <th> Table field name </ th> <th> Type </ th> <th> Constraint </ th>
-  </ tr>
+    <th> Field </th> <th> Table field name </th> <th> Type </th> <th> Constraint </th>
+  </tr>
   <tr>
-    <td> Row ID </ td> <td> id </ td> <td> 32-bit integer </ td> <td> Primary key, auto-increment </ td>
-  </ tr>
+    <td> Row ID </td> <td> id </td> <td> 32-bit integer </td> <td> Primary key, auto-increment </td>
+  </tr>
   <tr>
-    <td> User ID </ td> <td> code </ td> <td> String </ td> <td> Non-null, unique </ td>
-  </ tr>
+    <td> User ID </td> <td> code </td> <td> String </td> <td> Non-null, unique </td>
+  </tr>
   <tr>
-    <td> Hashed password </ td> <td> password_crypted </ td> <td> string </ td> <td> non-null </ td>
-  </ tr>
+    <td> Hashed password </td> <td> password_crypted </td> <td> string </td> <td> non-null </td>
+  </tr>
   <tr>
-    <td> Email address </ td> <td> mail </ td> <td> String </ td> <td> Non-null </ td>
-  </ tr>
-</ table>
+    <td> Email address </td> <td> mail </td> <td> String </td> <td> Non-null </td>
+  </tr>
+</table>
 
 If there are other input items on the membership registration form such as name, address, phone number, desired conditions, etc., that field is also required.
 
-<h4> Create user table with mysql </ h4>
+<h4> Create user table with mysql </h4>
 
 Let's create a user table with mysql.
 
@@ -41,10 +41,10 @@ create table user (
   unique (mail),
   unique (code)
 ) ENGINE = InnoDB CHARSET = utf8mb4;
-</ pre>
+</pre>
 
 If utf8mb4 is not supported, replace it with utf8.
 
-<h3> Field description </ h3>
+<h3> Field description </h3>
 
-The fields are the same as the temporary registration user table except for the token, so please refer to the article <a href="/blog/20200110081755.html"> Creating a temporary registration user table </a>.
+The fields are the same as the temporary registration user table except for the token, so please refer to the article <a href="/blog/20200110081755.html"> Creating a temporary registration user table</a>.

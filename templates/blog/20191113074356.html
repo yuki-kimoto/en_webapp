@@ -3,16 +3,16 @@
     <a itemprop="item" href="/" class="bread-home">
       <span itemprop = "name">
         <img src = "/ images / bread / home.png" alt = "Mojolicious Startup">
-      </ span>
-    </a>
+      </span>
+   </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     here
-  </ li>
-</ ol>
-<h2> Database table and field name naming conventions </ h2>
+  </li>
+</ol>
+<h2> Database table and field name naming conventions </h2>
 
 At Mojolicious Startup, we want to show you one naming convention for database table names and field names for those who are starting a business.
 
@@ -21,23 +21,23 @@ You can freely decide the table name and column name of the database, but if you
 I found the following article as a well-organized one, so I will translate it and introduce it. Yii is one of PHP's web frameworks.
 
 <blockquote>
-<a href="https://www.yiiframework.com/wiki/227/guidelines-for-good-schema-design"> Guidelines for Good Schema Design-Yii Framework Wiki </a>
-</ blockquote>
+<a href="https://www.yiiframework.com/wiki/227/guidelines-for-good-schema-design"> Guidelines for Good Schema Design-Yii Framework Wiki</a>
+</blockquote>
 
 Read Yii for Mojolicious and ActiveRecord for Perl's DBI or O / R mapper. I've added some supplements for Mojolicious startups.
 
 <ul>
-  <li> Name database tables in singular rather than plural </ li>
-  <li> Do not add DB table name before field name </ li>
-  <li> Do not include table prefix in model class name </ li>
-  <li> Name the ID column of the table "id" </ li>
-  <li> Avoid meaningful primary key names </ li>
-  <li> Define foreign key relationships in the database schema </ li>
-  <li> Name foreign key fields ending in "id" </ li>
-  <li> Perform name relationships that reflect the properties of the singular / plural </ li>
-</ ul>
+  <li> Name database tables in singular rather than plural </li>
+  <li> Do not add DB table name before field name </li>
+  <li> Do not include table prefix in model class name </li>
+  <li> Name the ID column of the table "id" </li>
+  <li> Avoid meaningful primary key names </li>
+  <li> Define foreign key relationships in the database schema </li>
+  <li> Name foreign key fields ending in "id" </li>
+  <li> Perform name relationships that reflect the properties of the singular / plural </li>
+</ul>
 
-<h3> Introduction </ h3>
+<h3> Introduction </h3>
 
 Virtually all Yii applications are built on a database, and Yii is very flexible in how to deal with DBs, but good design choices make it more convenient than other designs.
 
@@ -51,19 +51,19 @@ Consistency is important.
 
 However, these are just guidelines, not rules, and your code will work if you don't follow them. But adopting them opens up an easier path.
 
-<b> Supplement </ b>
+<b> Supplement </b>
 
 ActiveRecord is the default O / R mapper included with Yii. For Mojolicious Startop, read Perl's DBI or O / R Mapper.
 
-<h3> Name database tables singular instead of plural </ h3>
+<h3> Name database tables singular instead of plural </h3>
 
-SQL tables are likely to hold many things, but the model is just one of them. It seems strange to see $ model = new Comments (). This strangeness reappears, such as when defining relationships.
+SQL tables are likely to hold many things, but the model is just one of them. It seems strange to see $model = new Comments (). This strangeness reappears, such as when defining relationships.
 
 Call the table "comments" instead of "comments" and "invoices" instead of "invoices". It will be reflected as it is in the Dell class name (comment, invoice).
 
 If you can never change the DB schema, at least change the Yii model class name to reflect the appropriate case, but add extra comments to the code to make the user aware of this discrepancy.
 
-<b> Supplement </ b>
+<b> Supplement </b>
 
 The point is to make the table name singular.
 
@@ -73,9 +73,9 @@ comments # Not OK
 
 invoice # OK
 invoices # Not OK
-</ pre>
+</pre>
 
-<h3> Do not add the DB table name before the field name </ h3>
+<h3> Do not add the DB table name before the field name </h3>
 
 This method is common in traditional SQL schema design, but it can be tedious when using ActiveRecord. An example of a category table.
 
@@ -86,24 +86,21 @@ create table category (create table category (create table category (create tabl
     category_name VARCHAR ..., name VARCHAR ...,
     category_value INTEGER value INTEGER
 ););
-</ pre>
+</pre>
 
 <pre>
 <? php
-$ category = new Category ();
+$category = new Category ();
 // YUCK // BETTER
-$ category-> category_id $ category-> id
-$ category-> category_name $ category-> name
-$ category-> category_value $ category-> value
-</ pre>
+$category->category_id$category->id$category->category_name$category->name$category->category_value$category->value</pre>
 
 The "long" way makes handmade SQL queries a little easier to read, but it's not very convenient to use with ActiveRecord.
 
-<b> Supplement </ b>
+<b> Supplement </b>
 
 The point is that you don't precede the field name with the table name.
 
-<h3> Do not include the table prefix in the model class name </ h3>
+<h3> Do not include the table prefix in the model class name </h3>
 
 Yii supports the concept of table prefixes. This is useful in a shared hosting environment where all applications share a single database. You can store them all in the same database without conflict, such as by adding blog_ to the table name of the blog and time_ to the table name of the timekeeping application.
 
@@ -114,15 +111,15 @@ However, you cannot include these prefixes in your class because the need to avo
 <pre>
 class TblComment extends CActiveRecord {// NO
 class Comment extends CActiveRecord {// YES
-</ pre>
+</pre>
 
 Seeing the prefix everywhere in the code is very distracting.
 
-<b> Supplement </ b>
+<b> Supplement </b>
 
 This is a description of ActiveRecord classes, so if you give Perl a model name that corresponds to a table name, it means that you don't include the table prefix.
 
-<h3> Name the ID column of the table "id" </ h3>
+<h3> Name the ID column of the table "id" </h3>
 
 Many tables have their own independent, single-column, unique primary key (int NOT NULL AUTO_INCREMENT PRIMARY KEY is a common example), and for the name id (not commentid or postid), it's a bit smoother. It works.
 
@@ -132,11 +129,11 @@ Example: CArrayDataProvider assumes that the key is id. You can override it with
 
 For example, if a table has a multi-column primary key, or if the table's primary key is a foreign key to the ID of another table, this rule does not apply.
 
-<b> Supplement </ b>
+<b> Supplement </b>
 
 The point is that the ID that identifies the row should be named id.
 
-<h3> Avoid meaningful primary key names </ h3>
+<h3> Avoid meaningful primary key names </h3>
 
 A classic design mistake is to create a table with a primary key that has real meaning. In this example, the user table uses the user name as the primary key.
 
@@ -147,7 +144,7 @@ CREATE TABLE user (
     email VARCHAR ...
     ...
 )
-</ pre>
+</pre>
 
 This has two drawbacks.
 
@@ -164,15 +161,15 @@ CREATE TABLE user (
    email ...
    ...
 );
-</ pre>
+</pre>
 
 With this method, if you change an individual's username, only this one record will be updated.
 
-<b> Supplement </ b>
+<b> Supplement </b>
 
 The point isLet's have an id just to identify the row without taste, and make it an auto-increment with the primary key. Set a unique constraint on the meaningful primary key (name in this example).
 
-<h3> Define foreign key relationships in the database schema </ h3>
+<h3> Define foreign key relationships in the database schema </h3>
 
 In most databases, the database can define relationships between tables, so this field holds an ID that points to the primary key of another table. These are foreign keys and provide referential integrity by preventing rows from being deleted if someone else points to them.
 
@@ -180,17 +177,17 @@ MySQL's InnoDB enforces foreign key constraints. MyISAM allows you to define the
 
 But even if Yii doesn't consider them, foreign keys are an important part of maintaining database referential integrity. There are many tutorials on the web on how to learn about them.
 
-<b> Supplement </ b>
+<b> Supplement </b>
 
 The point is that if you want to put a foreign key constraint in the database schema, put it on the database side, not on the O / R mapper side.
 
-<h3> Name foreign key fields ending in "id" </ h3>
+<h3> Name foreign key fields ending in "id" </h3>
 
 In connection with the previous note, if there is a field that holds the user's ID, call the userid field instead of user. This is because we almost certainly want to define a relation for every foreign key we include in the table.
 
-In Yii, class variables, DB fields, virtual attributes, and relationships all share a single namespace, so $ model-> user cannot be both a table foreign key and a relationship.
+In Yii, class variables, DB fields, virtual attributes, and relationships all share a single namespace, so $model->usercannot be both a table foreign key and a relationship.
 
-By calling the FK user ID, the BELONGS_TO relationship of $ model-> user is formed naturally and easily.
+By calling the FK user ID, the BELONGS_TO relationship of $model->useris formed naturally and easily.
 
 <pre>
 class Post extends CActiveRecord {
@@ -198,18 +195,18 @@ class Post extends CActiveRecord {
    public function relations ()
    {
        return array (
-          'user' => array (self :: BELONGS_TO,'User','userid')
+          'user' => array (self::BELONGS_TO,'User','userid')
        );
    }
-</ pre>
+</pre>
 
 Note: Some people prefer to use Id or _id instead of id. This is strictly a matter of personal taste, but it needs to be consistent.
 
-<b> Supplement </ b>
+<b> Supplement </b>
 
 The point is that foreign key names should be followed by "id" or "Id" or "_id" to ensure consistent naming conventions. For Mojolicious startups, we'll use the method of prefixing the table name with "_id" as the name of the foreign key.
 
-<h3> Perform name relationships that reflect singular / plural properties </ h3>
+<h3> Perform name relationships that reflect singular / plural properties </h3>
 
 Relationships should reflect the singular / plural in the name in order to continue the theme of consistency and make the code easier for others to read.
 
@@ -218,22 +215,18 @@ HAS_ONE-returns a single model: singular
 BELONGS_TO-returns a single model: singular
 HAS_MANY-Returns an array of models: plural
 MANY_MANY-returns an array of models: plural
-</ pre>
+</pre>
 
 For relations that return an array, there may be only one model, but keep in mind that the fact that it is an array guarantees multiple names.
 
 You should always be able to tell if the relation returns an array or a model.
 
 <pre>
-$ model-> post
-$ model-> comments
-$ model-> author
-$ model-> members
-</ pre>
+$model->post$model->comments$model->author$model->members</pre>
 
 The code is much harder to read and maintain if you need to look it up.
 
-<b> Supplement </ b>
+<b> Supplement </b>
 
 This is a story about method name naming conventions when defining ActiveRecord one-to-one, one-to-many, many-to-one, and many-to-many.
 

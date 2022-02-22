@@ -1,8 +1,8 @@
-<h2> Create unauthenticated user table </ h2>
+<h2> Create unauthenticated user table </h2>
 
-Let's create an unauthenticated user table. After <a href="/blog/20200107082558.html"> Creating Membership Registration Form </a>, the next step is to create an unauthenticated user table in the database.
+Let's create an unauthenticated user table. After <a href="/blog/20200107082558.html"> Creating Membership Registration Form</a>, the next step is to create an unauthenticated user table in the database.
 
-<h3> Unauthenticated user table </ h3>
+<h3> Unauthenticated user table </h3>
 
 The unauthenticated user table is a table used to register temporary registered users who have not been authenticated.
 
@@ -12,36 +12,36 @@ I named the table "user_unauth".
 
 <table>
   <tr>
-    <th> Field </ th> <th> Table field name </ th> <th> Type </ th> <th> Constraint </ th> <th> Default value </ ht>
-  </ tr>
+    <th> Field </th> <th> Table field name </th> <th> Type </th> <th> Constraint </th> <th> Default value </ht>
+  </tr>
   <tr>
-    <td> ID </ td> <td> id </ td> <td> 32bit integer </ td> <td> Primary key, auto-increment </ td> <td> None </ td>
-  </ tr>
+    <td> ID </td> <td> id </td> <td> 32bit integer </td> <td> Primary key, auto-increment </td> <td> None </td>
+  </tr>
   <tr>
-    <td> Email address </ td> <td> mail </ td> <td> String </ td> <td> Non-null </ td> <td> Empty string </ td>
-  </ tr>
+    <td> Email address </td> <td> mail </td> <td> String </td> <td> Non-null </td> <td> Empty string </td>
+  </tr>
   <tr>
-    <td> Hashed password </ td> <td> password_crypted </ td> <td> String </ td> <td> Non-null </ td> <td> Empty string </ td>
-  </ tr>
+    <td> Hashed password </td> <td> password_crypted </td> <td> String </td> <td> Non-null </td> <td> Empty string </td>
+  </tr>
   <tr>
-    <td> token </ td> <td> token <td> string </ td> <td> non-null, unique </ td> <td> empty string </ td>
-  </ tr>
+    <td> token </td> <td> token <td> string </td> <td> non-null, unique </td> <td> empty string </td>
+  </tr>
   <tr>
-    <td> Token expiration </ td> <td> token_expiration </ td> <td> 64-bit integer </ td> <td> non-null </ td> <td> 0 </ td>
-  </ tr>
+    <td> Token expiration </td> <td> token_expiration </td> <td> 64-bit integer </td> <td> non-null </td> <td> 0 </td>
+  </tr>
   <tr>
-    <td> Creation date </ td> <td> token_expiration </ td> <td> Date Time </ td> <td> Non-null </ td> <td> 0001-01-01 00:00:00 </ strong> td>
-  </ tr>
+    <td> Creation date </td> <td> token_expiration </td> <td> Date Time </td> <td> Non-null </td> <td> 0001-01-01 00:00:00 </strong> td>
+  </tr>
   <tr>
-    <td> Updated </ td> <td> token_expiration </ td> <td> Date Time </ td> <td> Non-null </ td> <td> 0001-01-01 00:00:00 </ strong> td>
-  </ tr>
-</ table>
+    <td> Updated </td> <td> token_expiration </td> <td> Date Time </td> <td> Non-null </td> <td> 0001-01-01 00:00:00 </strong> td>
+  </tr>
+</table>
 
 If there are other input items on the membership registration form such as name, address, phone number, desired conditions, etc., that field is also required.
 
-<h4> Create unauthenticated user table in MariaDB </ h4>
+<h4> Create unauthenticated user table in MariaDB </h4>
 
-Let's create an unauthenticated user table with <a href="https://en.mariadb.perlzemi.com/"> MariaDB </a>.
+Let's create an unauthenticated user table with <a href="https://en.mariadb.perlzemi.com/"> MariaDB</a>.
 
 <pre>
 create table user_unauth (
@@ -55,17 +55,17 @@ create table user_unauth (
   unique (mail),
   unique (token)
 ) ENGINE = InnoDB CHARSET = utf8mb4;
-</ pre>
+</pre>
 
 It is assumed that utf8mb4 is supported. If it is not supported, please use utf8. The database engine is InnoDB to support transactions.
 
 Put as many fields as possible with a not null constraint. Set all default values ​​for fields other than the primary key.
 
-<h3> Field description </ h3>
+<h3> Field description </h3>
 
 A description of the field.
 
-<h4> ID </ h4>
+<h4> ID </h4>
 
 In the introduction to web system development, ID means a key that can uniquely identify a row. An integer value that has no meaning in itself. Make sure every table has an ID whose value is automatically incremented. If it is referenced from another table, use the ID.
 
@@ -73,28 +73,28 @@ Set the primary key and auto_increment. Primary key constraints are special cons
 
 The type is a 32-bit integer type int.
 
-<h4> Hashed password </ h4>
+<h4> Hashed password </h4>
 
 A field to store the hashed password. Just keep in mind here that you don't just save the password you received on the form. Hashed passwords are discussed in the places where we describe the process of user authentication.
 
-<h4> Email address </ h4>
+<h4> Email address </h4>
 
 The user's email address. Email addresses must be unique, so set a unique constraint.
 
-<h4> Token </ h4>
+<h4> Token </h4>
 
 A unique token issued to send an email and authenticate users. It is a random value, such as "356a192b7913b04c54574d18c28d46e6395428ab". Tokens must be unique, so set a unique constraint.
 
-<h4> Token expiration date </ h4>
+<h4> Token expiration date </h4>
 
 The expiration date of the token. When this expiration date expires, the token becomes invalid and user authentication is no longer possible.
 
 The type is a 64-bit integer type bigint so that the time information can be retained for a long time.
 
-<h4> Creation date and time </ h4>
+<h4> Creation date and time </h4>
 
 The creation date and time is of type datetime. The default value is "0001-01-01 00:00:00", which is the minimum valid date and time in the SQL standard.
 
-<h4> Updated date and time </ h4>
+<h4> Updated date and time </h4>
 
 The update date and time is of type datetime. The default value is "0001-01-01 00:00:00", which is the minimum valid date and time in the SQL standard.

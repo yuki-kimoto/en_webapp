@@ -3,60 +3,60 @@
     <a itemprop="item" href="/" class="bread-home">
       <span itemprop = "name">
         <img src = "/ images / bread / home.png" alt = "Introduction to Web System Development Perl & Mojolicious">
-      </ span>
-    </a>
+      </span>
+   </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     here
-  </ li>
-</ ol>
+  </li>
+</ol>
 
-<h2> Building a web development environment on Linux </ h2>
+<h2> Building a web development environment on Linux </h2>
 
 Explains how to build a web development environment on Linux servers such as Ubuntu, CentOS, and Debian.
 
 It is assumed that you can connect to the Linux server using SSH.
 
-<h3> Prerequisites for building a Web system development environment with Perl </ h3>
+<h3> Prerequisites for building a Web system development environment with Perl </h3>
 
 I will write about the prerequisites for installing Perl on each Linux. Package installation commands such as yum and apt-get are different for Linux distributions, so write down what you need.
 
-<h4> make </ h4>
+<h4> make </h4>
 
 If make is not installed, please install it.
 
 <pre>
 #CentOS example
 sudo yum -y install make make
-</ pre>
+</pre>
 
 make is used as a tool to perform the steps when installing a Perl module.
 
-<h4> gcc </ h4>
+<h4> gcc </h4>
 
 If gcc is not installed, install it.
 
 <pre>
 #CentOS example
 sudo yum -y install gcc
-</ pre>
+</pre>
 
 gcc is needed to compile the C extension if it's used in a Perl module.
 
-<h4> patch </ h4>
+<h4> patch </h4>
 
 If patch is not installed, install it.
 
 <pre>
 #CentOS example
 sudo yum -y install patch patch
-</ pre>
+</pre>
 
 patch is required if you want to use a Perl installation tool called perlbrew.
 
-<h4> openssl </ h4>
+<h4> openssl </h4>
 
 If openssl is not installed, please install it. In addition to the openssl commands, it also installs the openssl library (openssl-devel, named differently for Linux distributions).
 
@@ -64,49 +64,49 @@ If openssl is not installed, please install it. In addition to the openssl comma
 #CentOS example
 sudo yum -y install openssl
 sudo yum -y install openssl-devel
-</ pre>
+</pre>
 
 openssl is not directly related to Perl, but it should be installed in advance as the recent web requires HTTPS to connect.
 
-<h4> git </ h4>
+<h4> git </h4>
 
 If you don't have git installed, install it.
 
 <pre>
 #CentOS example
 sudo yum -y git
-</ pre>
+</pre>
 
 Although git is not directly related to Perl, it is used for source code control in Web system development, so let's install it.
 
-<h4> System Perl </ h4>
+<h4> System Perl </h4>
 
 For Web system development, I use Perl that is installed in the user environment, but it would be convenient if I also installed the system Perl.
 
 <pre>
 #CentOS example
 sudo yum -y install perl perl-core
-</ pre>
+</pre>
 
-<h3> Installing Perl in the user environment </ h3>
+<h3> Installing Perl in the user environment </h3>
 
 Next, let's install Perl. Install Perl in your environment. The part of the following article, "Installing Perl in the User Environment".
 
 <ul>
-  <li> <a href="https://perlzemi.com/blog/20180813153411.html"> Installing Perl on Linux </a> </ li>
-</ ul>
+  <li> <a href="https://perlzemi.com/blog/20180813153411.html"> Installing Perl on Linux</a> </li>
+</ul>
 
 When developing a Web system, use the one installed in the above procedure instead of the core Perl. The biggest reason is that it's easy and convenient to have Perl installed in your environment to install modules from a site called CPAN.
 
 You can also upgrade Perl-only without relying on the system Perl.
 
-<h3> Install Mojolicious </ h3>
+<h3> Install Mojolicious </h3>
 
 Finally, install Mojolicious using a tool called cpanm that you installed when you installed Perl on Linux.
 
 <pre>
 cpanm Mojolicious
-</ pre>
+</pre>
 
 Thank you for building the Web system development environment.
 

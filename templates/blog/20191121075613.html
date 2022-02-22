@@ -1,4 +1,4 @@
-<h2> Creating an EC site where you can search for products </ h2>
+<h2> Creating an EC site where you can search for products </h2>
 
 Can Mojolicious and Perl really meet the functionality and development efficiency needed to start up a business?
 
@@ -14,11 +14,11 @@ You can create your own web shop by taking pictures of things around you. What k
 
 Let's start creating an EC site right away. This page explains how to set up a website for product search in the development environment and display it.
 
-<a href="/blog/20191115083343.html"> Build a web development environment on Windows </a> or <a href="/blog/20191120072622.html"> Build a web development environment on macOS </a> > It is assumed that you are doing it.
+<a href="/blog/20191115083343.html"> Build a web development environment on Windows</a> or <a href="/blog/20191120072622.html"> Build a web development environment on macOS</a> > It is assumed that you are doing it.
 
 For Windows, start msys2. For macOS, launch the terminal.
 
-<h3> Web application template creation </ h3>
+<h3> Web application template creation </h3>
 
 The first task when you first start creating an EC site is to create a template for your web application. Mojolicious provides commands for creating templates.
 
@@ -31,7 +31,7 @@ Try running the following command from the command line and pressing Enter.
 <pre>
 #Create a web application template with the name "Myshop"
 mojo generate app Myshop
-</ pre>
+</pre>
 
 The generated directories and files are output as shown below.
 
@@ -53,11 +53,11 @@ The generated directories and files are output as shown below.
   [write] /home/kimoto/labo/tmp/myshop/templates/layouts/default.html.ep
   [mkdir] / home / kimoto / labo / tmp / myshop / templates / example
   [write] /home/kimoto/labo/tmp/myshop/templates/example/welcome.html.ep
-</ pre>
+</pre>
 
 Note that the web application name was capitalized at the beginning, but the directory name is lowercase, such as "myshop".
 
-<h3> Launching a web application </ h3>
+<h3> Launching a web application </h3>
 
 Let's launch the web application right away.
 
@@ -65,13 +65,13 @@ First of all, go to the web application directory "myshop".
 
 <pre>
 cd myshop
-</ pre>
+</pre>
 
 Now let's use the ls command to display the file. Use the -l option for a more detailed view.
 
 <pre>
 ls -l
-</ pre>
+</pre>
 
 It will be displayed in the following manner.
 
@@ -82,47 +82,47 @@ drwxrwxr-x 2 kimoto kimoto 4096 Nov 21 08:21 public
 drwxrwxr-x 2 kimoto kimoto 4096 Nov 21 08:21 script
 drwxrwxr-x 2 kimoto kimoto 4096 Nov 21 08:21 t
 drwxrwxr-x 4 kimoto kimoto 4096 Nov 21 08:21 templates
-</ pre>
+</pre>
 
 I will briefly explain each directory and file.
 
-<h4> lib --module directory </ h4>
+<h4> lib --module directory </h4>
 
 It is used to store Perl modules that make up the Web application in lib. A module is a component that makes up a program.
 
-<h4> myshop.conf --configuration file </ h4>
+<h4> myshop.conf --configuration file </h4>
 
 myshop.conf is a web application configuration file.
 
-<h4> public --public file </ h4>
+<h4> public --public file </h4>
 
 Public is used to store static files such as images, CSS and JavaScript.
 
-<h4> script </ h4>
+<h4> script </h4>
 
 Contains Perl scripts for launching web applications.
 
-<h4> t </ h4>
+<h4> t </h4>
 
 "T" is a directory for storing web application tests.
 
-<h4> templates </ h4>
+<h4> templates </h4>
 
 "Templates" is used to store the template file of the web application. To change the screen you see from your browser, modify the files in it.
 
-<h4> Launching a web application </ h4>
+<h4> Launching a web application </h4>
 
 Let's start the web application. Use Mojolicious's "morbo" command to launch a web application. In the argument of morbo, specify the startup script of the Web application stored in the script directory.
 
 <pre>
 morbo script / myshop
-</ pre>
+</pre>
 
 The following is displayed and the web application is launched.
 
 <pre>
 Server available at http://127.0.0.1:3000
-</ pre>
+</pre>
 
 Launch IE, Chrome, Firefox or Safari, enter the URL displayed above in the URL field, and press Enter. You can copy the characters on the command line by left-clicking and dragging.
 
@@ -130,7 +130,7 @@ When the following characters are displayed on the screen, the web application h
 
 <pre>
 Welcome to the Mojolicious real-time web framework!
-</ pre>
+</pre>
 
 Congratulations. You are now at the starting line of web development!
 

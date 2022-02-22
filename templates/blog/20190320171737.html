@@ -3,49 +3,49 @@
     <a itemprop="item" href="/" class="bread-home">
       <span itemprop = "name">
         <img src = "/ images / bread / home.png" alt = "Mojolicious Startup">
-      </ span>
-    </a>
+      </span>
+   </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     here
-  </ li>
-</ ol>
-<h2> "Perl + Mojolicious" Web application development with Sakura VPS Part 2 What is VPS? </ H2>
+  </li>
+</ol>
+<h2> "Perl + Mojolicious" Web application development with Sakura VPS Part 2 What is VPS? </H2>
 
 
 What is VPS? If you are not familiar with development to some extent, many people will hear it for the first time.
 
 VPS is an abbreviation for Virtual Private Server. It's difficult to get an image with this.
 
-From the user's point of view, without fear of misunderstanding, VPS looks like a <b> cheap and available dedicated server </ b>.
+From the user's point of view, without fear of misunderstanding, VPS looks like a <b> cheap and available dedicated server </b>.
 
 Dedicated servers are expensive to rent. It occupies a whole machine. On the other hand, VPS virtually creates a dedicated server. In other words, I think it's easier to imagine having an image of multiple dedicated servers virtually built on one machine.
 
 <pre>
-<h3> Dedicated server </ h3>
+<h3> Dedicated server </h3>
 + -------------- +
 | Dedicated server | 1 machine
 + -------------- +
 
-<h3> How VPS works </ h3>
+<h3> How VPS works </h3>
 + ------------------ + ------------------- + ---------- ------- +
 Dedicated Server (VPS) | Dedicated Server (VPS) | Dedicated Server (VPS) |
 + ------------------ + ------------------- + ---------- ------- +
 Multiple dedicated servers on one machine
 Looks like there is
-</ pre>
+</pre>
 
 From the user's point of view, it's okay to think that you are renting a dedicated server. You have root privileges and can do anything. You are completely free to use all the features of the OS and you can install any application.
 
-<h3> What is the difference between using a shared server and VPS? </ H3>
+<h3> What is the difference between using a shared server and VPS? </H3>
 
 Until a long time ago, Perl was strongly recognized as a language for describing CGI. It was common to create a CGI script, upload it to a shared server using FTP, and deploy the web application.
 
 However, I don't recommend this method at all now. Scripts created using Perl's CGI.pm are limited, have poor performance, are expensive to maintain, are low in productivity, are manually deployed, and have permissions set file by file. There are few good things to say, like you need to.
 
-Books and old websites are almost 100% explained how to create Perl / CGI in this way and place it on a shared server, but I do not recommend it at all.
+Books and old websites are almost 100%explained how to create Perl / CGI in this way and place it on a shared server, but I do not recommend it at all.
 
 A shared server is to use one server together. It is a service that assigns each user under "/ home / user name" and asks them to place the CGI script in that directory. You don't have to build the environment yourself, but it has a lot of restrictions.
 
@@ -53,7 +53,7 @@ On the other hand, with VPS, you need to build the environment yourself, but you
 
 It has become a convenient era because it is now possible to rent an environment that can be used exclusively for about 1000 yen a month.
 
-<h3> What is the difference between a dedicated server and a VPS </ h3>
+<h3> What is the difference between a dedicated server and a VPS </h3>
 
 The first difference from the dedicated server is the price. Dedicated servers are considerably more costly. Another difference is that VPS often doesn't allow you to freely add hardware parts.
 
@@ -65,9 +65,9 @@ It's just the work of deploying the web application in the new environment, copy
 
 It is important to make a web application that works on any domain once it is written.
 
-<h3> What is the cloud? </ H3>
+<h3> What is the cloud? </H3>
 
-Recently, I often hear about cloud and cloud. What is the cloud? The definition isn't very clear, but the image is <b> a dedicated server with scalable hardware performance </ b>.
+Recently, I often hear about cloud and cloud. What is the cloud? The definition isn't very clear, but the image is <b> a dedicated server with scalable hardware performance </b>.
 
 For example, when you need an additional CPU, you can add one CPU just by setting it, or when you want to increase the disk capacity, you can add it just by setting it. The price is higher than VPS, many are for companies, and it seems that the price is often estimated.
 

@@ -3,16 +3,16 @@
     <a itemprop="item" href="/" class="bread-home">
       <span itemprop = "name">
         <img src = "/ images / bread / home.png" alt = "Mojolicious Startup">
-      </ span>
-    </a>
+      </span>
+   </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     here
-  </ li>
-</ ol>
-<h2> "Perl + Mojolicious" Web application development with Sakura VPS 7th User Creation </ h2>
+  </li>
+</ol>
+<h2> "Perl + Mojolicious" Web application development with Sakura VPS 7th User Creation </h2>
 
 
 Finally, if you place a web application, execute it, and access it from a browser, I would like to reach the point where you can access the application.
@@ -21,7 +21,7 @@ The first thing you need to do is create a user. At the moment, you should see t
 
 <pre>
 #
-</ pre>
+</pre>
 
 If the line starts with # like this, it means that you are working as the root user.
 
@@ -31,94 +31,94 @@ Therefore, it is very dangerous to run a web application with root privileges, a
 
 <pre>
 Web applications run with lower privileges than root
-</ pre>
+</pre>
 
 So let's create a user to run the web application. The user name can be anything. I usually make it with a user named kimoto, but let's make it with your own name. Or maybe you could create a dedicated user for your web app.
 
 This time, I would like to use the user name webapp.
 
-<h3> Use the useradd command to create a user </ h3>
+<h3> Use the useradd command to create a user </h3>
 
 Use the useradd command to create a user.
 
 <pre>
 useradd webapp
-</ pre>
+</pre>
 
 When executed, nothing is output on the screen, so I'm a little worried, but it's okay. On Unix / Linux, nothing is displayed when the process succeeds, and an error is displayed when the process fails, so remember to wake up.
 
 <pre>
 On Linux, if the command is successful, nothing is often output.
-</ pre>
+</pre>
 
-<h3> Use passwd to set a password for the user </ h3>
+<h3> Use passwd to set a password for the user </h3>
 
 Next, let's set a password for the user. Use passwd to set a password for the user.
 
 <pre>
 passwd username
-</ pre>
+</pre>
 
 Therefore, here, execute as follows.
 
 <pre>
 passwd webapp
-</ pre>
+</pre>
 
 You will be asked to enter your password. Enter your password and press Enter.
 
 <pre>
 Changing password for user webapp.
 New password: New password:
-</ pre>
+</pre>
 
 The longer the password is, the safer it is, so use a password with at least 8 characters and a symbol. If it's too long, it's hard to remember and easy to forget, and if it's too short, it's dangerous. This is a feeling. Also make a note of this. It's especially easy to forget at first, and you'll forget it if you don't access it for a while.
 
 <pre>
 Make a note of the password as it is easy to forget.
-</ pre>
+</pre>
 
 After completing the first entry, you will be asked to enter the password again to confirm it, so enter it. Enter your password and press Enter.
 
 <pre>
 Retype new password:
-</ pre>
+</pre>
 
 It was successful when the following message appeared.
 
 <pre>
 passwd: all authentication tokens updated successfully.
-</ pre>
+</pre>
 
-<h3> User change is done with su </ h3>
+<h3> User change is done with su </h3>
 
-Now that we have created a user, let's change it to that user. Use the <b> su </ b> command to change the user. Notice that there is a hyphen behind su.
+Now that we have created a user, let's change it to that user. Use the <b> su </b> command to change the user. Notice that there is a hyphen behind su.
 
 <pre>
 su --webapp
-</ pre>
+</pre>
 
 You can now change the user. Adding a hyphen after su means that it does not inherit the environment variables of the original user. For now, when switching users, keep in mind that environment variables are not inherited.
 
 <pre>
 The hyphen after su means that it does not inherit the environment variables of the original user
-</ pre>
+</pre>
 
 If you do not specify the user name as Tips, it means changing to the root user.
 
 <pre>
-<h3> Change to root user </ h3>
+<h3> Change to root user </h3>
 su ---
-</ pre>
+</pre>
 
 Normally, when changing a user, the password of the user is required, but when changing from the root user to another user, the password is not required.
 
-<h3> Return to original user </ h3>
+<h3> Return to original user </h3>
 
 Use the exit command to return to the original user.
 <pre>
 exit
-</ pre>
+</pre>
 
 If you changed from root to a user called webapp, you can return to the root user.
 
